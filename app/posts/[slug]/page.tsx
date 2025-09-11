@@ -2,13 +2,9 @@ import { notFound } from "next/navigation";
 import LikeButton from "../../../components/LikeButton";
 import { getPostBySlug, Post } from "../../../data/posts";
 
-type Params = {
-  params: {
-    slug: string;
-  };
-};
+export default async function PostPage(props: unknown) {
+  const { params } = props as { params: { slug: string } };
 
-export default async function PostPage({ params }: Params) {
   const post: Post | undefined = await getPostBySlug(params.slug);
 
   if (!post) {
