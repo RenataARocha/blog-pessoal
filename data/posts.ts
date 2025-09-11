@@ -1,14 +1,16 @@
 export type Post = {
+  id: number;      
   slug: string;
   title: string;
   summary: string;
-  date: string; // ISO ou '2025-09-11'
+  date: string;     // ISO ou '2025-09-11'
   author: string;
   content: string;
 };
 
 export const posts: Post[] = [
   {
+    id: 1,
     slug: "primeiro-post",
     title: "Meu Primeiro Post",
     summary: "Introdução ao meu blog pessoal.",
@@ -17,6 +19,7 @@ export const posts: Post[] = [
     content: "Esse é o conteúdo completo do meu primeiro post. Estou animada para compartilhar minha jornada no desenvolvimento front-end!",
   },
   {
+    id: 2,  
     slug: "nextjs-app-router",
     title: "Explorando o App Router do Next.js",
     summary: "Entendendo a nova estrutura de roteamento do Next.js.",

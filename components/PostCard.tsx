@@ -1,15 +1,22 @@
 import Link from "next/link";
-import type { Post } from "../data/posts";
 
-export default function PostCard({ post }: { post: Post }) {
+type PostCardProps = {
+  title: string;
+  content: string;
+  date: string;
+  slug: string;
+};
+
+export default function PostCard({ title, content, date, slug }: PostCardProps) {
   return (
-    <article className="border rounded-xl p-4 shadow-sm bg-white hover:shadow-md transition">
-      <h3 className="text-xl font-semibold">{post.title}</h3>
-      <p className="text-sm text-gray-500">{post.date} — {post.author}</p>
-      <p className="mt-2 text-gray-700">{post.summary}</p>
-      <Link href={`/posts/${post.slug}`} className="text-pink-500 hover:underline mt-2 inline-block">
-        Ler mais →
+    <article className="border p-4 rounded-lg shadow-sm hover:shadow-md transition">
+      <h2 className="text-xl font-semibold">{title}</h2>
+      <p className="text-gray-700 mt-2">{content}</p>
+      <small className="text-gray-500">{date}</small>
+      <div> <Link href={`/posts/${slug}`} className="text-pink-500 hover:underline">
+        Leia mais →
       </Link>
+      </div>
     </article>
   );
 }

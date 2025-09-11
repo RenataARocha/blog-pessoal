@@ -2,32 +2,38 @@
 
 import { useState, useEffect } from "react";
 
-export default function LikeButton({ slug }: { slug: string }) {
-  const [likes, setLikes] = useState<number>(0);
+type LikeButtonProps = {
+    slug: string; // cada post deve ter um slug único
+};
 
-  // carrega valor salvo no localStorage ao montar
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem(`likes:${slug}`);
-      if (saved) setLikes(Number(saved));
-    } catch (e) {
-      // ambiente sem localStorage (segurança)
-    }
-  }, [slug]);
+export default function LikeButton({ slug }: LikeButtonProps) {
+    const [likes, setLikes] = useState<number>(0);
 
-  // salva no localStorage quando likes muda
-  useEffect(() => {
-    try {
-      localStorage.setItem(`likes:${slug}`, String(likes));
-    } catch (e) {}
-  }, [likes, slug]);
+    // Carrega o valor salvo no localStorage ao montar o componente
+    useEffect(() => {
+        try {
+            const saved = localStorage.getItem(`likes:${slug}`);
+            if (saved) setLikes(Number(saved));
+        } catch {
+            // Ambiente sem localStorage (por exemplo, SSR)
+        }
+    }, [slug]);
 
-  return (
-    <button
-      onClick={() => setLikes((prev) => prev + 1)}
-      className="bg-pink-500 text-white px-4 py-2 rounded-xl hover:bg-pink-600 transition"
-    >
-      ❤️ Curtir {likes > 0 ? `(${likes})` : ""}
-    </button>
-  );
+    // Salva no localStorage sempre que os likes mudam
+    useEffect(() => {
+        try {
+            localStorage.setItem(`likes:${slug}`, String(likes));
+        } catch {
+            // Segurança caso o localStorage não esteja disponível
+        }
+    }, [likes, slug]);
+
+    return (
+        <button
+            onClick={() => setLikes((prev) => prev + 1)}
+            className="bg-pink-500 text-white px-4 py-2 rounded-xl hover:bg-pink-600 transition"
+        >
+            ❤️ Curtir {likes > 0 ? `(${likes})` : ""}
+        </button>
+    );
 }
