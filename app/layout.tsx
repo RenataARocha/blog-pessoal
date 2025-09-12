@@ -1,15 +1,13 @@
-import Link from "next/link";
 import "./globals.css";
 import { Playfair_Display, Assistant } from "next/font/google";
+import Navbar from "./Navbar"; // componente client
 
-// Fonte do título
 const playfair = Playfair_Display({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-playfair",
 });
 
-// Fonte do subtítulo e textos
 const assistant = Assistant({
   subsets: ["latin"],
   weight: ["300", "400", "500"],
@@ -21,15 +19,10 @@ export const metadata = {
   description: "Um blog pessoal sobre minha jornada no front-end",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-BR" className={`${playfair.variable} ${assistant.variable}`}>
       <body className="bg-white text-black font-assistant">
-        {/* Cabeçalho */}
         <header className="bg-white py-8 text-center relative">
           <span className="absolute bottom-0 left-0 w-full h-px bg-stone-400 shadow-sm shadow-stone-900/50"></span>
           <div className="max-w-4xl mx-auto">
@@ -42,38 +35,12 @@ export default function RootLayout({
             <p className="font-assistant text-sm text-gray-600 mb-6">
               Um blog pessoal sobre minha jornada no front-end
             </p>
-            
-            {/* Navbar */}
-            <nav className="flex justify-center space-x-30">
-              <Link 
-                href="/" 
-                className="font-assistant text- uppercase tracking-wider text-gray-700 hover:text-pink-600 transition-colors font-normal"
-              >
-                HOME
-              </Link>
-              <Link 
-                href="/about" 
-                className="font-assistant text- uppercase tracking-wider text-gray-700 hover:text-pink-600 transition-colors font-normal"
-              >
-                SOBRE
-              </Link>
-              <Link 
-                href="/posts" 
-                className="font-assistant text- uppercase tracking-wider text-gray-700 hover:text-pink-600 transition-colors font-normal"
-              >
-                BLOG
-              </Link>
-              <Link 
-                href="/contact" 
-                className="font-assistant text- uppercase tracking-wider text-gray-700 hover:text-pink-600 transition-colors font-normal"
-              >
-                CONTATO
-              </Link>
-            </nav>
+
+            {/* Navbar Client */}
+            <Navbar />
           </div>
         </header>
-        
-        {/* Conteúdo */}
+
         <main className="max-w-3xl mx-auto p-6">{children}</main>
       </body>
     </html>
