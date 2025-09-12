@@ -27,35 +27,55 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="pt-BR"
-      style={{
-        "--font-title": `"${playfair.style.fontFamily}"`,
-        "--font-sub": `"${assistant.style.fontFamily}"`,
-      } as React.CSSProperties}
-    >
-      <body className="bg-[var(--background)] text-[var(--foreground)] font-[var(--font-sub)]">
+    <html lang="pt-BR" className={`${playfair.variable} ${assistant.variable}`}>
+      <body className="bg-white text-black font-assistant">
         {/* Cabeçalho */}
-        <header className="border-b border-gray-200 py-6 text-center">
-          <h1 className="text-4xl title">Diário de uma Dev</h1>
-          <h2 className="text-xl subtitle text-pink-600">Renata Rocha</h2>
-          <p className="subtitle text-gray-500">
-            Um blog pessoal sobre minha jornada no front-end
-          </p>
-
-          {/* Navbar */}
-          <nav className="mt-4 flex justify-center space-x-8 text-sm uppercase" style={{ fontFamily: "var(--font-sub)" }}>
-            <Link href="/" className="hover:text-pink-500">Home</Link>
-            <Link href="/about" className="hover:text-pink-500">Sobre</Link>
-            <Link href="/posts" className="hover:text-pink-500">Blog</Link>
-            <Link href="/contact" className="hover:text-pink-500">Contato</Link>
-          </nav>
+        <header className="bg-white py-8 text-center relative">
+          <span className="absolute bottom-0 left-0 w-full h-px bg-stone-400 shadow-sm shadow-stone-900/50"></span>
+          <div className="max-w-4xl mx-auto">
+            <h1 className="font-playfair text-5xl font-normal mb-2 tracking-wide text-black">
+              Diário de uma Dev
+            </h1>
+            <h2 className="font-assistant text-lg font-normal text-pink-600 mb-1">
+              Renata Rocha
+            </h2>
+            <p className="font-assistant text-sm text-gray-600 mb-6">
+              Um blog pessoal sobre minha jornada no front-end
+            </p>
+            
+            {/* Navbar */}
+            <nav className="flex justify-center space-x-30">
+              <Link 
+                href="/" 
+                className="font-assistant text- uppercase tracking-wider text-gray-700 hover:text-pink-600 transition-colors font-normal"
+              >
+                HOME
+              </Link>
+              <Link 
+                href="/about" 
+                className="font-assistant text- uppercase tracking-wider text-gray-700 hover:text-pink-600 transition-colors font-normal"
+              >
+                SOBRE
+              </Link>
+              <Link 
+                href="/posts" 
+                className="font-assistant text- uppercase tracking-wider text-gray-700 hover:text-pink-600 transition-colors font-normal"
+              >
+                BLOG
+              </Link>
+              <Link 
+                href="/contact" 
+                className="font-assistant text- uppercase tracking-wider text-gray-700 hover:text-pink-600 transition-colors font-normal"
+              >
+                CONTATO
+              </Link>
+            </nav>
+          </div>
         </header>
-
+        
         {/* Conteúdo */}
         <main className="max-w-3xl mx-auto p-6">{children}</main>
       </body>
     </html>
-
   );
 }
