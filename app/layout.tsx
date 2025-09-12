@@ -26,7 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <header className="bg-white py-8 text-center relative">
           <span className="absolute bottom-0 left-0 w-full h-px bg-stone-400 shadow-sm shadow-stone-900/50"></span>
           <div className="max-w-4xl mx-auto">
-            <h1 className="font-playfair text-5xl font-normal mb-2 tracking-wide text-black">
+            <h1 className="font-playfair text-6xl font-normal mb-2 tracking-wide text-black">
               Diário de uma Dev
             </h1>
             <h2 className="font-assistant text-lg font-normal text-pink-600 mb-1">
@@ -41,7 +41,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </div>
         </header>
 
-        <main className="max-w-3xl mx-auto p-6">{children}</main>
+        <main className="mt-1">{children}</main>
       </body>
     </html>
   );
