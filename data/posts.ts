@@ -49,8 +49,8 @@ export const posts: Post[] = [
   },
   {
     id: 5,
-    slug: "projeto-7-sage",
-    title: "Projeto 7 - Sage",
+    slug: "To-Do-List-React",
+    title: "To-Do List React",
     summary: "Projeto completo desenvolvido em HTML, CSS e JavaScript, com foco em interface agradável.",
     date: "2025-09-10",
     author: "Renata Rocha",
@@ -58,8 +58,8 @@ export const posts: Post[] = [
   },
   {
     id: 6,
-    slug: "koru-projeto-6",
-    title: "Projeto Koru - Projeto 6",
+    slug: "assistente-de-estudos-com-IA",
+    title: "Assistente de Estudos com IA",
     summary: "Projeto desenvolvido durante o programa Koru, aplicando boas práticas de front-end.",
     date: "2025-09-09",
     author: "Renata Rocha",

@@ -12,8 +12,8 @@ import imgKoru from "../public/assets/assistente-de-estudos-com-IA.png";
 const imagesMap: Record<string, StaticImageData> = {
   "organizadora-lar": imgOrganizadora,
   "gerador-curriculo": imgCurriculo,
-  "projeto-7-sage": imgProjeto7,
-  "koru-projeto-6": imgKoru,
+  "To-Do-List-React": imgProjeto7,
+  "assistente-de-estudos-com-IA": imgKoru,
 };
 
 export default function Home() {
@@ -46,16 +46,29 @@ export default function Home() {
 
       {/* Últimos Posts */}
       <section className="max-w-6xl mx-auto py-12 px-4">
-        <h2 className="text-3xl font-playfair mb-8 text-center">Últimos Posts</h2>
-        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {posts.map((post) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+          {posts.slice(0, 2).map((post) => (
             <PostCard
               key={post.id}
               title={post.title}
               content={post.summary}
               date={post.date}
               slug={post.slug}
-              image={post.slug !== "primeiro-post" ? imagesMap[post.slug] : undefined}
+              image={undefined} // sem imagem
+            />
+          ))}
+        </div>
+
+        {/* Demais posts com imagem */}
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {posts.slice(2).map((post) => (
+            <PostCard
+              key={post.id}
+              title={post.title}
+              content={post.summary}
+              date={post.date}
+              slug={post.slug}
+              image={imagesMap[post.slug]}
             />
           ))}
         </div>
