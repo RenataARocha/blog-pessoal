@@ -67,6 +67,8 @@ export default function Home() {
         </Link>
       </section>
 
+      
+
       {/* Call to Action */}
       <section className="text-center py-16">
         <h2 className="text-2xl font-playfair mb-6">Quer ver mais?</h2>
