@@ -1,7 +1,9 @@
 import PostCard from "../components/PostCard";
+import FeaturedPostCard from "../components/FeaturedPostCard";
 import { posts } from "../data/posts";
 import Link from "next/link";
 import Image, { type StaticImageData } from "next/image";
+
 // Import das imagens
 import imgOrganizadora from "../public/assets/organizadora-lar.png";
 import imgCurriculo from "../public/assets/gerador-curriculo.png";
@@ -17,8 +19,12 @@ const imagesMap: Record<string, StaticImageData> = {
 };
 
 export default function Home() {
+  // Separa os primeiros 2 posts (sem imagem) dos demais (com imagem)
+  const firstTwoPosts = posts.slice(0, 2);
+  const remainingPosts = posts.slice(2);
+
   return (
-    <div className="space-y-16">
+    <div >
 
       {/* Hero / Apresentação com imagem de fundo */}
       <section className="relative w-screen h-screen">
@@ -44,25 +50,25 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Últimos Posts */}
+      {/* Últimos Posts (os 2 primeiros, sem imagem) */}
       <section className="max-w-6xl mx-auto py-12 px-4">
+        <h2 className="text-3xl font-playfair font-bold text-gray-800 mb-8 text-center">Últimos Posts</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-          {posts.slice(0, 2).map((post) => (
+          {firstTwoPosts.map((post) => (
             <PostCard
               key={post.id}
               title={post.title}
               content={post.summary}
               date={post.date}
               slug={post.slug}
-              image={undefined} // sem imagem
             />
           ))}
         </div>
 
-        {/* Demais posts com imagem */}
-        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {posts.slice(2).map((post) => (
-            <PostCard
+        {/* Demais posts (com imagem, usando FeaturedPostCard) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+          {remainingPosts.map((post) => (
+            <FeaturedPostCard
               key={post.id}
               title={post.title}
               content={post.summary}
