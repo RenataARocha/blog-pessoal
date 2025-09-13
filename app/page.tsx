@@ -80,18 +80,34 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Mini bio / Sobre você */}
-      <section className="bg-gray-50 py-16 text-center max-w-3xl mx-auto px-6 rounded-lg shadow-lg">
-        <h2 className="text-2xl font-playfair mb-4">Sobre mim</h2>
-        <p className="text-gray-700 font-assistant mb-6">
-          Sou Renata Rocha, designer gráfico em transição para Front-End. Crio projetos modernos, intuitivos e com foco em usabilidade. Amo transformar ideias em sites bonitos e funcionais.
-        </p>
-        <Link
-          href="/about"
-          className="px-6 py-3 bg-pink-600 text-white rounded-lg hover:bg-pink-500 transition transform hover:-translate-y-1"
-        >
-          Saiba mais
-        </Link>
+    {/* Mini bio / Sobre você */}
+      <section className="max-w-6xl mx-auto py-16 px-4">
+        <div className="flex flex-col md:flex-row items-center gap-12">
+          {/* Imagem */}
+          <div className="md:w-1/2">
+            <Image
+              src="/assets/programando.jpg" 
+              alt="Renata Rocha programando"
+              width={600}
+              height={400}
+              className="rounded-xl shadow-lg"
+            />
+          </div>
+
+          {/* Conteúdo (texto e botão) */}
+          <div className="md:w-1/2 text-center md:text-left">
+            <h2 className="text-3xl font-playfair font-bold text-gray-800 mb-4">Sobre mim</h2>
+            <p className="text-lg text-gray-700 font-assistant leading-relaxed mb-6">
+              Sou Renata Rocha, designer gráfico em transição para o desenvolvimento Front-End. Sou apaixonada por criar projetos modernos, intuitivos e com foco em usabilidade. Com minha experiência em design, transformo ideias em sites bonitos e funcionais, garantindo uma experiência de usuário excepcional.
+            </p>
+            <Link
+              href="/about"
+              className="px-6 py-3 bg-pink-600 text-white rounded-lg hover:bg-pink-500 transition transform hover:-translate-y-1 inline-block"
+            >
+              Saiba mais
+            </Link>
+          </div>
+        </div>
       </section>
 
       {/* Call to Action */}
