@@ -1,26 +1,58 @@
+import { getPostBySlug } from "../../../data/posts";
 import { notFound } from "next/navigation";
+import Image, { type StaticImageData } from "next/image";
 import LikeButton from "../../../components/LikeButton";
-import { getPostBySlug, Post } from "../../../data/posts";
 
-export default async function PostPage(props: unknown) {
-  const { params } = props as { params: { slug: string } };
+import imgOrganizadora from "../../../public/assets/organizadora-lar.png";
+import imgCurriculo from "../../../public/assets/gerador-curriculo.png";
+import imgProjeto7 from "../../../public/assets/To-Do List React.png";
+import imgKoru from "../../../public/assets/assistente-de-estudos-com-IA.png";
 
-  const post: Post | undefined = await getPostBySlug(params.slug);
+const imagesMap: Record<string, StaticImageData> = {
+  "organizadora-lar": imgOrganizadora,
+  "gerador-curriculo": imgCurriculo,
+  "To-Do-List-React": imgProjeto7,
+  "assistente-de-estudos-com-IA": imgKoru,
+};
+
+type Props = {
+  params: { slug: string };
+};
+
+export default async function PostPage({ params }: Props) {
+  // ✅ Aguarda o post ser carregado
+  const post = await getPostBySlug(params.slug);
 
   if (!post) {
-    notFound();
+    return notFound();
   }
 
   return (
-    <article className="prose lg:prose-xl max-w-none mx-auto p-6">
-      <h1>{post.title}</h1>
-      <p className="text-sm text-gray-500">{post.date} — {post.author}</p>
-      <div className="mt-4">
-        <p>{post.content}</p>
+    <div className="max-w-3xl mx-auto py-12 px-4">
+      <h1 className="text-4xl font-playfair font-bold text-gray-800 mb-4">
+        {post.title}
+      </h1>
+      <p className="text-gray-500 text-sm mb-6">
+        {post.date} • {post.author}
+      </p>
+
+      {/* Se tiver imagem */}
+      {imagesMap[post.slug] && (
+        <Image
+          src={imagesMap[post.slug]}
+          alt={post.title}
+          className="rounded-xl shadow-md mb-6"
+        />
+      )}
+
+      <div className="text-lg text-gray-700 leading-relaxed whitespace-pre-line">
+        {post.content}
       </div>
-      <div className="mt-6">
+
+      {/* Botão de like precisa do slug */}
+      <div className="mt-8">
         <LikeButton slug={post.slug} />
       </div>
-    </article>
+    </div>
   );
 }
