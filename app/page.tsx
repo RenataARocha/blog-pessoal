@@ -110,17 +110,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Call to Action */}
-      <section className="text-center py-16">
-        <h2 className="text-2xl font-playfair mb-6">Quer ver mais?</h2>
-        <Link
-          href="/contact"
-          className="px-6 py-3 bg-pink-600 text-white rounded-lg hover:bg-pink-500 transition transform hover:-translate-y-1"
-        >
-          Entre em contato
-        </Link>
-      </section>
-
     </div>
   );
 }
