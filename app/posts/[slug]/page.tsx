@@ -3,25 +3,27 @@ import { notFound } from "next/navigation";
 import Image, { type StaticImageData } from "next/image";
 import LikeButton from "../../../components/LikeButton";
 
+// Import das imagens
 import imgOrganizadora from "../../../public/assets/organizadora-lar.png";
 import imgCurriculo from "../../../public/assets/gerador-curriculo.png";
-import imgProjeto7 from "../../../public/assets/To-Do List React.png";
+import imgProjeto7 from "../../../public/assets/to-do-list-react.png";
 import imgKoru from "../../../public/assets/assistente-de-estudos-com-IA.png";
 
+// Mapeamento slug → imagem
 const imagesMap: Record<string, StaticImageData> = {
   "organizadora-lar": imgOrganizadora,
   "gerador-curriculo": imgCurriculo,
-  "To-Do-List-React": imgProjeto7,
+  "to-do-list-react": imgProjeto7,
   "assistente-de-estudos-com-IA": imgKoru,
 };
 
 type Props = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
 export default async function PostPage({ params }: Props) {
-  // ✅ Aguarda o post ser carregado
-  const post = await getPostBySlug(params.slug);
+  const { slug } = await params; // ⬅️ aqui a diferença!
+  const post = await getPostBySlug(slug);
 
   if (!post) {
     return notFound();
@@ -36,7 +38,7 @@ export default async function PostPage({ params }: Props) {
         {post.date} • {post.author}
       </p>
 
-      {/* Se tiver imagem */}
+      {/* Renderiza a imagem se houver */}
       {imagesMap[post.slug] && (
         <Image
           src={imagesMap[post.slug]}
@@ -49,7 +51,6 @@ export default async function PostPage({ params }: Props) {
         {post.content}
       </div>
 
-      {/* Botão de like precisa do slug */}
       <div className="mt-8">
         <LikeButton slug={post.slug} />
       </div>

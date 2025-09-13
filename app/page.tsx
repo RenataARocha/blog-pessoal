@@ -7,7 +7,7 @@ import Image, { type StaticImageData } from "next/image";
 // Import das imagens
 import imgOrganizadora from "../public/assets/organizadora-lar.png";
 import imgCurriculo from "../public/assets/gerador-curriculo.png";
-import imgProjeto7 from "../public/assets/To-Do List React.png";
+import imgProjeto7 from "../public/assets/to-do-list-react.png";
 import imgKoru from "../public/assets/assistente-de-estudos-com-IA.png";
 
 // Mapeamento do slug para a imagem correspondente
