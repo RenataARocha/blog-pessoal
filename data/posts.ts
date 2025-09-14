@@ -1,4 +1,3 @@
-// Tipo de post
 export type Post = {
   id: number;
   slug: string;
@@ -11,7 +10,6 @@ export type Post = {
   site?: string;
 };
 
-// Array de posts
 export const posts: Post[] = [
   {
     id: 1,
@@ -20,7 +18,11 @@ export const posts: Post[] = [
     summary: "Introdução ao meu blog pessoal.",
     date: "2025-09-10",
     author: "Renata Rocha",
-    content: "Esse é o conteúdo completo do meu primeiro post. Estou animada para compartilhar minha jornada no desenvolvimento front-end!",
+    content:
+      "Hoje começa oficialmente minha jornada no desenvolvimento front-end! 🚀\n\n" +
+      "Depois de muito estudo e dedicação, decidi compartilhar aqui minhas experiências, aprendizados e projetos. " +
+      "Quero registrar cada passo dessa caminhada — desde os primeiros desafios com HTML, CSS e JavaScript até as conquistas maiores no futuro.\n\n" +
+      "Vem comigo nessa jornada, porque aprendizado compartilhado é aprendizado multiplicado! 💡💻",
   },
   {
     id: 2,
@@ -29,7 +31,11 @@ export const posts: Post[] = [
     summary: "Entendendo a nova estrutura de roteamento do Next.js.",
     date: "2025-09-11",
     author: "Renata Rocha",
-    content: "O App Router traz várias melhorias, como layouts aninhados, simplificação do roteamento e suporte nativo a streaming e SSR. Estou explorando essas funcionalidades no meu projeto pessoal!",
+    content:
+      "O **App Router** do Next.js chegou trazendo uma revolução na forma de estruturar aplicações. " +
+      "Agora temos **layouts aninhados**, simplificação no roteamento e suporte nativo a **Streaming** e **SSR**.\n\n" +
+      "Estou explorando essas novidades no meu projeto pessoal e já percebo como o desenvolvimento fica mais " +
+      "organizado e poderoso. Em breve compartilho aqui exemplos práticos que podem ajudar quem também está aprendendo Next.js! ⚡",
   },
   {
     id: 3,
@@ -38,7 +44,12 @@ export const posts: Post[] = [
     summary: "App de organização de tarefas com alarme, categorias, metas e sugestões automáticas.",
     date: "2025-09-12",
     author: "Renata Rocha",
-    content: "Projeto completo da Organizadora do Lar. Inclui alarme, categorias, metas e sugestões automáticas para facilitar sua rotina. Funcionalidades desenvolvidas com HTML, CSS e JavaScript. Em breve melhorias e novas funcionalidades serão implementadas.",
+    content:
+      "Criar o **Organizadora do Lar** foi transformar uma necessidade pessoal em um projeto real. ✨\n\n" +
+      "O app ajuda a gerenciar tarefas do dia a dia com **alarme**, **categorias**, **metas** e até **sugestões automáticas** " +
+      "para facilitar a rotina. Tudo isso desenvolvido com **HTML, CSS e JavaScript**.\n\n" +
+      "Ainda tenho várias ideias para evoluir essa aplicação — incluindo banco de dados e notificações. " +
+      "Esse é um dos projetos que mais me orgulho, porque une tecnologia com solução prática para a vida real. 💖",
     github: "https://github.com/RenataARocha/Organizadora-Do-Lar",
     site: "https://renataarocha.github.io/Organizadora-Do-Lar/pages/tela-inicial.html",
   },
@@ -49,39 +60,42 @@ export const posts: Post[] = [
     summary: "Projeto que cria currículos dinâmicos e interativos, com preview em tempo real.",
     date: "2025-09-13",
     author: "Renata Rocha",
-    content: "Projeto pessoal que cria currículos interativos e bonitos rapidamente. Desenvolvido com HTML, CSS e JavaScript, inclui preview em tempo real. Estou pensando em adicionar vídeo demonstrativo em breve.",
+    content:
+      "Sempre acreditei que um **currículo bem apresentado** pode abrir portas. Pensando nisso, criei o **Gerador de Currículo Interativo**. 💼\n\n" +
+      "Ele permite montar currículos bonitos e dinâmicos rapidamente, com **preview em tempo real**. " +
+      "Foi desenvolvido com **HTML, CSS e JavaScript**, e ainda quero incluir um **vídeo demonstrativo** mostrando o passo a passo.\n\n" +
+      "É um projeto pessoal que une meu lado criativo de designer com minha nova fase como desenvolvedora. 🎨💻",
     github: "https://github.com/RenataARocha/projeto-8-gerador-curriculo",
     site: "https://projeto-8-gerador-curriculo.vercel.app/",
   },
   {
     id: 5,
-    slug: "To-Do-List-React",
+    slug: "to-do-list-react",
     title: "To-Do List React",
     summary: "Projeto completo desenvolvido em HTML, CSS e JavaScript, com foco em interface agradável.",
     date: "2025-09-14",
     author: "Renata Rocha",
-    content: "Projeto 7 - Sage, desenvolvido em grupo pelo programa Desenvolve, em parceria com o Grupo Boticário + Koru. Inclui funcionalidades de lista de tarefas com organização e responsividade. Tecnologias: HTML, CSS e JavaScript. Em breve melhorias e vídeos demonstrativos.",
+    content:
+      "No programa **Desenvolve (Grupo Boticário + Koru)**, tive a oportunidade de trabalhar em equipe no projeto **To-Do List React**. ✅\n\n" +
+      "O objetivo era criar uma lista de tarefas funcional, com foco em **organização**, **responsividade** e **interface amigável**. " +
+      "Tecnologias utilizadas: **HTML, CSS e JavaScript**.\n\n" +
+      "Foi um exercício incrível de colaboração, troca de ideias e aprendizado. Em breve trago melhorias e vídeos demonstrativos desse trabalho em equipe. 🤝",
     github: "https://github.com/RenataARocha/projeto-7",
     site: "https://projeto-7-sage.vercel.app/",
   },
   {
     id: 6,
-    slug: "assistente-de-estudos-com-IA",
+    slug: "assistente-de-estudos-com-ia",
     title: "Assistente de Estudos com IA",
     summary: "Projeto desenvolvido durante o programa Koru, aplicando boas práticas de front-end.",
     date: "2025-09-15",
     author: "Renata Rocha",
-    content: "Projeto 6 - Koru, desenvolvido em grupo pelo programa Desenvolve, em parceria com o Grupo Boticário + Koru. Aplicação de boas práticas de front-end com HTML, CSS e JavaScript. Futuras melhorias e vídeos demonstrativos serão adicionados.",
+    content:
+      "Esse projeto foi especial: durante o **programa Desenvolve (Boticário + Koru)**, participei do desenvolvimento do **Assistente de Estudos com IA**. 🤖✨\n\n" +
+      "Trabalhamos em grupo aplicando boas práticas de **front-end** com **HTML, CSS e JavaScript**, criando uma aplicação que auxilia estudantes na rotina de aprendizado.\n\n" +
+      "Ainda quero incluir **melhorias** e **vídeos demonstrativos** para mostrar todo o potencial dessa aplicação. " +
+      "Foi uma experiência incrível de colaboração e inovação em equipe! 🚀",
     github: "https://github.com/RenataARocha/koru-projeto-6",
     site: "https://koru-projeto-6.vercel.app/",
   },
 ];
-
-// Funções auxiliares
-export async function getAllPosts() {
-  return posts;
-}
-
-export async function getPostBySlug(slug: string) {
-  return posts.find((p) => p.slug === slug);
-}

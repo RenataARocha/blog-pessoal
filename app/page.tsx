@@ -8,14 +8,14 @@ import Image, { type StaticImageData } from "next/image";
 import imgOrganizadora from "../public/assets/organizadora-lar.png";
 import imgCurriculo from "../public/assets/gerador-curriculo.png";
 import imgProjeto7 from "../public/assets/to-do-list-react.png";
-import imgKoru from "../public/assets/assistente-de-estudos-com-IA.png";
+import imgKoru from "../public/assets/assistente-de-estudos-com-ia.png";
 
 // Mapeamento do slug para a imagem correspondente
 const imagesMap: Record<string, StaticImageData> = {
   "organizadora-lar": imgOrganizadora,
   "gerador-curriculo": imgCurriculo,
-  "To-Do-List-React": imgProjeto7,
-  "assistente-de-estudos-com-IA": imgKoru,
+  "to-do-list-react": imgProjeto7,
+  "assistente-de-estudos-com-ia": imgKoru,
 };
 
 export default function Home() {

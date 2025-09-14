@@ -8,13 +8,13 @@ import Link from "next/link";
 import imgOrganizadora from "../../../public/assets/organizadora-lar.png";
 import imgCurriculo from "../../../public/assets/gerador-curriculo.png";
 import imgProjeto7 from "../../../public/assets/to-do-list-react.png";
-import imgKoru from "../../../public/assets/assistente-de-estudos-com-IA.png";
+import imgKoru from "../../../public/assets/assistente-de-estudos-com-ia.png";
 
 const imagesMap: Record<string, StaticImageData> = {
   "organizadora-lar": imgOrganizadora as StaticImageData,
   "gerador-curriculo": imgCurriculo as StaticImageData,
-  "To-Do-List-React": imgProjeto7 as StaticImageData,
-  "assistente-de-estudos-com-IA": imgKoru as StaticImageData,
+  "to-do-list-react": imgProjeto7 as StaticImageData,
+  "assistente-de-estudos-com-ia": imgKoru as StaticImageData,
 };
 
 interface PostPageProps {
