@@ -9,10 +9,10 @@ import { motion } from "framer-motion";
 
 // Mapeamento slug -> caminho da imagem no /public
 const imagesMap: Record<string, string> = {
-  "organizadora-lar": "/assets/organizadora-lar.png",
-  "gerador-curriculo": "/assets/gerador-curriculo.png",
-  "to-do-list-react": "/assets/to-do-list-react.png",
-  "assistente-de-estudos-com-ia": "/assets/assistente-de-estudos-com-ia.png",
+  "organizadora-lar": "/assets/organizadora-lar1.png",
+  "gerador-curriculo": "/assets/gerador-curriculo1.png",
+  "to-do-list-react": "/assets/to-do-list-react1.png",
+  "assistente-de-estudos-com-ia": "/assets/assistente-de-estudos-com-ia1.png",
 };
 
 export default function Home() {
