@@ -1,8 +1,17 @@
+"use client"; // ✅ Essencial para usar framer-motion
+
+import { motion } from "framer-motion";
 import { Github, Linkedin } from "lucide-react";
 
 export default function AboutPage() {
   return (
-    <section className="flex justify-center items-center py-12 px-4">
+    <motion.section
+      className="flex justify-center items-center py-12 px-4"
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -10 }}
+      transition={{ duration: 0.6 }}
+    >
       <div className="bg-white shadow-lg rounded-2xl p-8 max-w-3xl text-center space-y-6 border border-gray-100">
         <h2 className="text-3xl font-bold text-gray-800">Sobre mim</h2>
 
@@ -17,10 +26,8 @@ export default function AboutPage() {
         </p>
 
         <p className="text-gray-700 leading-relaxed">
-          No <strong>DevClub</strong>, mergulhei em{" "}
-          <em>HTML, CSS, JavaScript, Git e GitHub</em>, complementando minha
-          formação com bootcamps da <strong>DIO</strong> e{" "}
-          <strong>Koru (Grupo Boticário)</strong>. Mais recentemente, aprofundei
+          No <strong>DevClub</strong>, mergulhei em <em>HTML, CSS, JavaScript, Git e GitHub</em>, complementando minha
+          formação com bootcamps da <strong>DIO</strong> e <strong>Koru (Grupo Boticário)</strong>. Mais recentemente, aprofundei
           meus estudos em <strong>React</strong>, explorando a criação de
           componentes reutilizáveis, rotas dinâmicas, hooks e integração com
           APIs, o que ampliou ainda mais minha capacidade de construir
@@ -28,8 +35,7 @@ export default function AboutPage() {
         </p>
 
         <p className="text-gray-700 leading-relaxed">
-          Domino ferramentas como <strong>VS Code</strong> e{" "}
-          <strong>Git</strong>, com experiência em <strong>APIs REST</strong>,
+          Domino ferramentas como <strong>VS Code</strong> e <strong>Git</strong>, com experiência em <strong>APIs REST</strong>,
           responsividade e acessibilidade. Minha abordagem combina organização,
           empatia e atenção aos detalhes, sempre com o usuário no centro.
         </p>
@@ -56,6 +62,6 @@ export default function AboutPage() {
           </a>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

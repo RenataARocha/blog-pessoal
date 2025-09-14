@@ -1,8 +1,11 @@
+"use client";
+
 import PostCard from "../components/PostCard";
 import FeaturedPostCard from "../components/FeaturedPostCard";
 import { posts } from "../data/posts";
 import Link from "next/link";
 import Image, { type StaticImageData } from "next/image";
+import { motion } from "framer-motion";
 
 // Import das imagens
 import imgOrganizadora from "../public/assets/organizadora-lar.png";
@@ -24,8 +27,12 @@ export default function Home() {
   const remainingPosts = posts.slice(2);
 
   return (
-    <div >
-
+    <motion.div
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -10 }}
+      transition={{ duration: 0.6 }}
+    >
       {/* Hero / Apresentação com imagem de fundo */}
       <section className="relative w-screen h-screen">
         <Image
@@ -37,9 +44,9 @@ export default function Home() {
         />
         <div className="absolute inset-0 bg-black/50" />
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-6">
-          <h1 className="text-5xl font-playfair mb-6">Olá, eu sou Renata</h1>
+          <h1 className="text-5xl font-playfair mb-6">Eu sou Renata Rocha</h1>
           <p className="text-lg font-assistant mb-8">
-            Desenvolvedora Front-End em transição de carreira, criando projetos intuitivos e bonitos.
+            Desenvolvedora Front-End em transição, criando experiências digitais que combinam beleza e funcionalidade.
           </p>
           <Link
             href="/posts"
@@ -83,7 +90,6 @@ export default function Home() {
       {/* Mini bio / Sobre você */}
       <section className="max-w-6xl mx-auto py-16 px-4">
         <div className="flex flex-col md:flex-row items-center gap-12">
-          {/* Imagem */}
           <div className="md:w-1/2">
             <Image
               src="/assets/programando.jpg"
@@ -94,7 +100,6 @@ export default function Home() {
             />
           </div>
 
-          {/* Conteúdo (texto e botão) */}
           <div className="md:w-1/2 text-center md:text-left">
             <h2 className="text-3xl font-playfair font-bold text-gray-800 mb-4">Sobre mim</h2>
             <p className="text-lg text-gray-700 font-assistant leading-relaxed mb-6">
@@ -116,7 +121,8 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-    </div>
+    </motion.div>
   );
 }
+
+

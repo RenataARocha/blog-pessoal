@@ -5,6 +5,7 @@ import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import LikeButton from "../../components/LikeButton";
+import { motion } from "framer-motion";
 
 // Import das imagens
 import imgOrganizadora from "../../public/assets/organizadora-lar.png";
@@ -22,7 +23,13 @@ const imagesMap: Record<string, StaticImageData> = {
 
 export default function BlogPage() {
   return (
-    <div className="max-w-6xl mx-auto py-12 px-4 flex flex-col md:flex-row gap-8">
+    <motion.div
+      className="max-w-6xl mx-auto py-12 px-4 flex flex-col md:flex-row gap-8"
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -10 }}
+      transition={{ duration: 0.6 }}
+    >
       {/* Menu lateral */}
       <aside className="w-full md:w-1/4 sticky top-20 self-start mb-8 md:mb-0">
         <h2 className="font-bold text-xl mb-4">Posts</h2>
@@ -95,7 +102,7 @@ export default function BlogPage() {
           );
         })}
       </main>
-    </div>
+    </motion.div>
   );
 }
 
@@ -213,4 +220,3 @@ function CommentSection({ postSlug }: { postSlug: string }) {
     </div>
   );
 }
-
