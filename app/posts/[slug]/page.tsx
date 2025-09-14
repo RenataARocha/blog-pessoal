@@ -3,13 +3,12 @@ import { posts } from "../../../data/posts";
 import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
 
-// Import das imagens
+// imagens
 import imgOrganizadora from "../../../public/assets/organizadora-lar.png";
 import imgCurriculo from "../../../public/assets/gerador-curriculo.png";
 import imgProjeto7 from "../../../public/assets/to-do-list-react.png";
 import imgKoru from "../../../public/assets/assistente-de-estudos-com-IA.png";
 
-// Mapeamento slug -> imagem
 const imagesMap: Record<string, StaticImageData> = {
   "organizadora-lar": imgOrganizadora as StaticImageData,
   "gerador-curriculo": imgCurriculo as StaticImageData,
@@ -17,14 +16,7 @@ const imagesMap: Record<string, StaticImageData> = {
   "assistente-de-estudos-com-IA": imgKoru as StaticImageData,
 };
 
-// Tipagem da prop
-interface PostPageProps {
-  params: {
-    slug: string;
-  };
-}
-
-export default function PostPage({ params }: PostPageProps) {
+export default async function PostPage({ params }: { params: { slug: string } }) {
   const post = posts.find((p) => p.slug === params.slug);
   if (!post) return notFound();
 

@@ -46,7 +46,7 @@ export default function BlogPage() {
               {imgSrc ? (
                 <FeaturedPostCard
                   title={post.title}
-                  content={post.content} 
+                  content={post.content}
                   date={post.date}
                   slug={post.slug}
                   image={imgSrc}
@@ -54,7 +54,7 @@ export default function BlogPage() {
               ) : (
                 <PostCard
                   title={post.title}
-                  content={post.content} 
+                  content={post.content}
                   date={post.date}
                   slug={post.slug}
                 />
