@@ -4,6 +4,7 @@ import { posts } from "../../../data/posts";
 import Image from "next/image";
 import Link from "next/link";
 import { PostContent } from "../../../components/PostContent"; // Client Component para animação
+import ReactMarkdown from "react-markdown";
 
 // Mapeamento de slugs para paths das imagens públicas
 const imagesMap: Record<string, string> = {
@@ -50,14 +51,15 @@ export default async function PostPage({ params }: PostPageProps) {
           <Image
             src={imgSrc}
             alt={post.title}
-            width={600}   // Ajuste o tamanho conforme necessário
+            width={600}
             height={400}
             className="mb-6 rounded-lg"
           />
         )}
 
+        {/* Conteúdo renderizado com ReactMarkdown */}
         <div className="prose max-w-none text-gray-700">
-          {post.content}
+          <ReactMarkdown>{post.content}</ReactMarkdown>
         </div>
 
         <Link

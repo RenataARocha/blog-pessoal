@@ -5,13 +5,14 @@ import Link from "next/link";
 import { useState } from "react";
 import LikeButton from "../../components/LikeButton";
 import { motion } from "framer-motion";
+import ReactMarkdown from "react-markdown";
 
 // Mapeamento slug -> caminho da imagem no /public
 const mediaMap: Record<string, string> = {
   "organizadora-lar": "/assets/organizadora-lar.mp4", // vídeo
-  "gerador-curriculo": "/assets/gerador-curriculo.mp4", // imagem
-  "to-do-list-react": "/assets/to-do-list-react.mp4",   // imagem
-  "assistente-de-estudos-com-ia": "/assets/assistente-de-estudos-com-ia.mp4", // imagem
+  "gerador-curriculo": "/assets/gerador-curriculo.mp4",
+  "to-do-list-react": "/assets/to-do-list-react.mp4",
+  "assistente-de-estudos-com-ia": "/assets/assistente-de-estudos-com-ia.mp4",
 };
 
 export default function BlogPage() {
@@ -29,10 +30,7 @@ export default function BlogPage() {
         <ul className="space-y-2">
           {posts.map((post) => (
             <li key={post.id}>
-              <a
-                href={`#${post.slug}`}
-                className="text-blue-600 hover:underline"
-              >
+              <a href={`#${post.slug}`} className="text-blue-600 hover:underline">
                 {post.title}
               </a>
             </li>
@@ -54,7 +52,7 @@ export default function BlogPage() {
               <h2 className="text-2xl font-bold mb-2">{post.title}</h2>
               <small className="text-gray-500">{post.date}</small>
 
-              {/* Imagem do post */}
+              {/* Imagem / vídeo do post */}
               {mediaSrc && (
                 <video
                   src={mediaSrc}
@@ -63,8 +61,10 @@ export default function BlogPage() {
                 />
               )}
 
-              {/* Conteúdo */}
-              <p className="text-gray-700 mb-4 whitespace-pre-line">{post.content}</p>
+              {/* Conteúdo com Markdown */}
+              <div className="text-gray-700 mb-4 whitespace-pre-line">
+                <ReactMarkdown>{post.content}</ReactMarkdown>
+              </div>
 
               {/* Botões e interações */}
               <div className="flex items-center gap-4 mb-4">

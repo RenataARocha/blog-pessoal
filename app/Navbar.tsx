@@ -2,9 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { motion, animate } from "framer-motion";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState("");
+  const pathname = usePathname();
 
   const links = [
     { name: "HOME", href: "/" },
@@ -18,7 +20,8 @@ export default function Navbar() {
       e.preventDefault();
       const target = document.querySelector(href);
       if (target) {
-        const top = (target as HTMLElement).getBoundingClientRect().top + window.scrollY;
+        const top =
+          (target as HTMLElement).getBoundingClientRect().top + window.scrollY;
         animate(window.scrollY, top, {
           duration: 0.8,
           onUpdate(value) {
@@ -50,19 +53,26 @@ export default function Navbar() {
 
   return (
     <nav className="flex justify-center space-x-8">
-      {links.map((link) => (
-        <motion.a
-          key={link.href}
-          href={link.href}
-          onClick={(e) => handleClick(e, link.href)}
-          whileHover={{ scale: 1.1 }}
-          className={`font-assistant uppercase tracking-wider font-normal text-lg transition-colors ${
-            activeSection === link.href ? "text-pink-600" : "text-gray-700"
-          } hover:text-pink-400`}
-        >
-          {link.name}
-        </motion.a>
-      ))}
+      {links.map((link) => {
+        const isActive =
+          link.href.startsWith("#")
+            ? activeSection === link.href
+            : pathname === link.href;
+
+        return (
+          <motion.a
+            key={link.href}
+            href={link.href}
+            onClick={(e) => handleClick(e, link.href)}
+            whileHover={{ scale: 1.1 }}
+            className={`font-assistant uppercase tracking-wider font-normal text-lg transition-colors ${
+              isActive ? "text-pink-600" : "text-gray-700"
+            } hover:text-pink-400`}
+          >
+            {link.name}
+          </motion.a>
+        );
+      })}
     </nav>
   );
 }

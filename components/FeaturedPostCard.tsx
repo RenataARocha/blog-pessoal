@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image, { type StaticImageData } from "next/image";
+import Image, { type StaticImageData } from "next/image"
 
 type FeaturedPostCardProps = {
   title: string;
@@ -33,9 +33,9 @@ export default function FeaturedPostCard({ title, content, date, slug, image }: 
         <div className="mt-auto">
           <Link
             href={`/posts/${slug}`}
-            className="inline-block px-6 py-2 bg-pink-600 text-white font-semibold rounded-lg hover:bg-pink-700 transition"
+            className="text-pink-500 hover:underline"
           >
-            Leia Mais
+            Leia Mais →
           </Link>
         </div>
       </div>
