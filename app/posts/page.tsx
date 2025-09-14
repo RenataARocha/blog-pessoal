@@ -48,7 +48,7 @@ export default function BlogPage() {
             <article
               key={post.id}
               id={post.slug}
-              className="border p-6 rounded-lg shadow-md hover:shadow-lg transition bg-white"
+              className="p-6 rounded-lg shadow-md hover:shadow-lg transition bg-white"
             >
               {/* Título e data */}
               <h2 className="text-2xl font-bold mb-2">{post.title}</h2>
@@ -101,51 +101,116 @@ export default function BlogPage() {
 
 // Usar o postSlug para criar comentários únicos por post
 function CommentSection({ postSlug }: { postSlug: string }) {
-  // Usando postSlug como chave para armazenar comentários específicos de cada post
-  const [comments, setComments] = useState<Record<string, string[]>>({});
+  const [comments, setComments] = useState<
+    Record<string, { text: string; author: string; replyTo?: number; liked?: boolean }[]>
+  >({});
   const [input, setInput] = useState("");
+  const [author, setAuthor] = useState(""); 
+  const [replyTo, setReplyTo] = useState<number | null>(null);
 
   const postComments = comments[postSlug] || [];
 
   const handleAddComment = () => {
-    if (!input.trim()) return;
-    
-    setComments(prev => ({
+    if (!input.trim() || !author.trim()) return;
+    const newComment = { 
+      text: input.trim(), 
+      author: author.trim(), 
+      replyTo: replyTo ?? undefined, 
+      liked: false 
+    };
+    setComments((prev) => ({
       ...prev,
-      [postSlug]: [...(prev[postSlug] || []), input.trim()]
+      [postSlug]: [...(prev[postSlug] || []), newComment],
     }));
-    
     setInput("");
+    setReplyTo(null);
+  };
+
+  const toggleLike = (idx: number) => {
+    setComments((prev) => ({
+      ...prev,
+      [postSlug]: prev[postSlug].map((c, i) =>
+        i === idx ? { ...c, liked: !c.liked } : c
+      ),
+    }));
+  };
+
+  const removeComment = (idx: number) => {
+    setComments((prev) => ({
+      ...prev,
+      [postSlug]: prev[postSlug].filter((_, i) => i !== idx),
+    }));
   };
 
   return (
-    <div className="mt-4">
+    <div className="mt-6">
       <h3 className="font-semibold mb-2">Comentários</h3>
-      <div className="flex gap-2 mb-2">
+
+      <div className="flex flex-col md:flex-row gap-2 mb-4">
+        <input
+          type="text"
+          value={author}
+          onChange={(e) => setAuthor(e.target.value)}
+          placeholder="Seu nome..."
+          className="border p-2 rounded-lg w-full md:w-1/4"
+        />
         <input
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="Escreva seu comentário..."
-          className="flex-1 border p-2 rounded-lg"
+          placeholder={replyTo !== null ? "Responder..." : "Escreva seu comentário..."}
+          className="border p-2 rounded-lg flex-1"
         />
         <button
           onClick={handleAddComment}
           className="bg-pink-500 text-white px-4 py-2 rounded-lg hover:bg-pink-600 transition"
         >
-          Comentar
+          {replyTo !== null ? "Responder" : "Comentar"}
         </button>
       </div>
-      <ul className="space-y-1">
+
+      <ul className="space-y-3">
         {postComments.map((comment, idx) => (
-          <li key={idx} className="border-b py-1 text-gray-700">
-            {comment}
+          <li
+            key={idx}
+            className={`p-2 rounded-lg ${
+              comment.replyTo !== undefined ? "ml-6 bg-gray-50" : "bg-gray-100"
+            }`}
+          >
+            {/* Mostra nome + comentário */}
+            <p className="font-semibold text-sm text-gray-700">{comment.author}</p>
+            <p className="text-gray-700 break-words">{comment.text}</p>
+
+            <div className="flex items-center gap-4 mt-2 text-sm">
+              <button
+                className={`${
+                  comment.liked ? "text-pink-500 font-semibold" : "text-gray-500"
+                } hover:text-pink-600`}
+                onClick={() => toggleLike(idx)}
+              >
+                {comment.liked ? "Curtido" : "Curtir"}
+              </button>
+
+              {comment.replyTo === undefined && (
+                <button
+                  onClick={() => setReplyTo(idx)}
+                  className="text-gray-500 hover:text-pink-500"
+                >
+                  Responder
+                </button>
+              )}
+
+              <button
+                onClick={() => removeComment(idx)}
+                className="hover:text-red-500 ml-auto"
+              >
+                ❌
+              </button>
+            </div>
           </li>
         ))}
       </ul>
-      {postComments.length === 0 && (
-        <p className="text-gray-500 text-sm">Seja o primeiro a comentar!</p>
-      )}
     </div>
   );
 }
+
