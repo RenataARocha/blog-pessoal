@@ -1,18 +1,17 @@
 "use client";
 
 import { posts } from "../../data/posts";
-import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import LikeButton from "../../components/LikeButton";
 import { motion } from "framer-motion";
 
 // Mapeamento slug -> caminho da imagem no /public
-const imagesMap: Record<string, string> = {
-  "organizadora-lar": "/assets/organizadora-lar.png",
-  "gerador-curriculo": "/assets/gerador-curriculo.png",
-  "to-do-list-react": "/assets/to-do-list-react.png",
-  "assistente-de-estudos-com-ia": "/assets/assistente-de-estudos-com-ia.png",
+const mediaMap: Record<string, string> = {
+  "organizadora-lar": "/assets/organizadora-lar.mp4", // vídeo
+  "gerador-curriculo": "/assets/gerador-curriculo.mp4", // imagem
+  "to-do-list-react": "/assets/to-do-list-react.mp4",   // imagem
+  "assistente-de-estudos-com-ia": "/assets/assistente-de-estudos-com-ia.mp4", // imagem
 };
 
 export default function BlogPage() {
@@ -44,7 +43,7 @@ export default function BlogPage() {
       {/* Conteúdo dos posts */}
       <main className="w-full md:w-3/4 space-y-16">
         {posts.map((post) => {
-          const imgSrc = imagesMap[post.slug];
+          const mediaSrc = mediaMap[post.slug];
           return (
             <article
               key={post.id}
@@ -56,13 +55,11 @@ export default function BlogPage() {
               <small className="text-gray-500">{post.date}</small>
 
               {/* Imagem do post */}
-              {imgSrc && (
-                <Image
-                  src={imgSrc}
-                  alt={post.title}
-                  width={800}
-                  height={450}
-                  className="rounded-lg my-4 object-cover"
+              {mediaSrc && (
+                <video
+                  src={mediaSrc}
+                  controls
+                  className="rounded-lg my-4 w-full max-h-[450px] object-cover"
                 />
               )}
 
@@ -176,18 +173,16 @@ function CommentSection({ postSlug }: { postSlug: string }) {
         {postComments.map((comment, idx) => (
           <li
             key={idx}
-            className={`p-2 rounded-lg ${
-              comment.replyTo !== undefined ? "ml-6 bg-gray-50" : "bg-gray-100"
-            }`}
+            className={`p-2 rounded-lg ${comment.replyTo !== undefined ? "ml-6 bg-gray-50" : "bg-gray-100"
+              }`}
           >
             <p className="font-semibold text-sm text-gray-700">{comment.author}</p>
             <p className="text-gray-700 break-words">{comment.text}</p>
 
             <div className="flex items-center gap-4 mt-2 text-sm">
               <button
-                className={`${
-                  comment.liked ? "text-pink-500 font-semibold" : "text-gray-500"
-                } hover:text-pink-600`}
+                className={`${comment.liked ? "text-pink-500 font-semibold" : "text-gray-500"
+                  } hover:text-pink-600`}
                 onClick={() => toggleLike(idx)}
               >
                 {comment.liked ? "Curtido" : "Curtir"}
