@@ -51,7 +51,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ScrollToTopButton />
 
         {/* ... (seu footer) ... */}
-        <footer className="bg-black text-white py-8">
+        <footer id="contato" className="bg-black text-white py-8">
           <div className="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left">
             {/* Título e Subtítulo */}
             <div className="mb-4 md:mb-0">

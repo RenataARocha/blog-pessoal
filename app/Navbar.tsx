@@ -1,32 +1,67 @@
-"use client"; 
+"use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import { motion, animate } from "framer-motion";
 
 export default function Navbar() {
-  const pathname = usePathname();
+  const [activeSection, setActiveSection] = useState("");
 
   const links = [
     { name: "HOME", href: "/" },
     { name: "SOBRE", href: "/about" },
     { name: "BLOG", href: "/posts" },
-    { name: "CONTATO", href: "/contact" },
+    { name: "CONTATO", href: "#contato" },
   ];
 
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith("#")) {
+      e.preventDefault();
+      const target = document.querySelector(href);
+      if (target) {
+        const top = (target as HTMLElement).getBoundingClientRect().top + window.scrollY;
+        animate(window.scrollY, top, {
+          duration: 0.8,
+          onUpdate(value) {
+            window.scrollTo(0, value);
+          },
+          ease: [0.25, 0.1, 0.25, 1],
+        });
+      }
+    }
+  };
+
+  useEffect(() => {
+    const sections = document.querySelectorAll("section, footer");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const target = entry.target as HTMLElement;
+          if (entry.isIntersecting) {
+            setActiveSection(`#${target.id}`);
+          }
+        });
+      },
+      { threshold: 0.6 }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <nav className="flex justify-center space-x-25">
+    <nav className="flex justify-center space-x-8">
       {links.map((link) => (
-        <Link
+        <motion.a
           key={link.href}
           href={link.href}
-          className={`
-            font-assistant uppercase tracking-wider font-normal text-lg transition-colors
-            ${pathname === link.href ? "text-pink-600" : "text-gray-700"}
-            hover:text-pink-400
-          `}
+          onClick={(e) => handleClick(e, link.href)}
+          whileHover={{ scale: 1.1 }}
+          className={`font-assistant uppercase tracking-wider font-normal text-lg transition-colors ${
+            activeSection === link.href ? "text-pink-600" : "text-gray-700"
+          } hover:text-pink-400`}
         >
           {link.name}
-        </Link>
+        </motion.a>
       ))}
     </nav>
   );
