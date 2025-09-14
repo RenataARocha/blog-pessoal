@@ -4,21 +4,15 @@ import PostCard from "../components/PostCard";
 import FeaturedPostCard from "../components/FeaturedPostCard";
 import { posts } from "../data/posts";
 import Link from "next/link";
-import Image, { type StaticImageData } from "next/image";
+import Image from "next/image";
 import { motion } from "framer-motion";
 
-// Import das imagens
-import imgOrganizadora from "../public/assets/organizadora-lar.png";
-import imgCurriculo from "../public/assets/gerador-curriculo.png";
-import imgProjeto7 from "../public/assets/to-do-list-react.png";
-import imgKoru from "../public/assets/assistente-de-estudos-com-ia.png";
-
-// Mapeamento do slug para a imagem correspondente
-const imagesMap: Record<string, StaticImageData> = {
-  "organizadora-lar": imgOrganizadora,
-  "gerador-curriculo": imgCurriculo,
-  "to-do-list-react": imgProjeto7,
-  "assistente-de-estudos-com-ia": imgKoru,
+// Mapeamento slug -> caminho da imagem no /public
+const imagesMap: Record<string, string> = {
+  "organizadora-lar": "/assets/organizadora-lar.png",
+  "gerador-curriculo": "/assets/gerador-curriculo.png",
+  "to-do-list-react": "/assets/to-do-list-react.png",
+  "assistente-de-estudos-com-ia": "/assets/assistente-de-estudos-com-ia.png",
 };
 
 export default function Home() {
@@ -124,5 +118,3 @@ export default function Home() {
     </motion.div>
   );
 }
-
-

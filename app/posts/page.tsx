@@ -1,24 +1,18 @@
 "use client";
 
 import { posts } from "../../data/posts";
-import Image, { type StaticImageData } from "next/image";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import LikeButton from "../../components/LikeButton";
 import { motion } from "framer-motion";
 
-// Import das imagens
-import imgOrganizadora from "../../public/assets/organizadora-lar.png";
-import imgCurriculo from "../../public/assets/gerador-curriculo.png";
-import imgProjeto7 from "../../public/assets/to-do-list-react.png";
-import imgKoru from "../../public/assets/assistente-de-estudos-com-ia.png";
-
-// Mapeamento slug -> imagem
-const imagesMap: Record<string, StaticImageData> = {
-  "organizadora-lar": imgOrganizadora,
-  "gerador-curriculo": imgCurriculo,
-  "to-do-list-react": imgProjeto7,
-  "assistente-de-estudos-com-ia": imgKoru,
+// Mapeamento slug -> caminho da imagem no /public
+const imagesMap: Record<string, string> = {
+  "organizadora-lar": "/assets/organizadora-lar.png",
+  "gerador-curriculo": "/assets/gerador-curriculo.png",
+  "to-do-list-react": "/assets/to-do-list-react.png",
+  "assistente-de-estudos-com-ia": "/assets/assistente-de-estudos-com-ia.png",
 };
 
 export default function BlogPage() {
@@ -78,13 +72,15 @@ export default function BlogPage() {
               {/* Botões e interações */}
               <div className="flex items-center gap-4 mb-4">
                 <LikeButton slug={post.slug} />
-                <Link
-                  href={post.github ?? "#"}
-                  target="_blank"
-                  className="text-blue-600 hover:underline"
-                >
-                  Ver no GitHub
-                </Link>
+                {post.github && (
+                  <Link
+                    href={post.github}
+                    target="_blank"
+                    className="text-blue-600 hover:underline"
+                  >
+                    Ver no GitHub
+                  </Link>
+                )}
                 {post.site && (
                   <Link
                     href={post.site}
@@ -96,7 +92,7 @@ export default function BlogPage() {
                 )}
               </div>
 
-              {/* Campo de comentários */}
+              {/* Comentários */}
               <CommentSection postSlug={post.slug} />
             </article>
           );
@@ -106,24 +102,24 @@ export default function BlogPage() {
   );
 }
 
-// Usar o postSlug para criar comentários únicos por post
+// Comentários únicos por post
 function CommentSection({ postSlug }: { postSlug: string }) {
   const [comments, setComments] = useState<
     Record<string, { text: string; author: string; replyTo?: number; liked?: boolean }[]>
   >({});
   const [input, setInput] = useState("");
-  const [author, setAuthor] = useState(""); 
+  const [author, setAuthor] = useState("");
   const [replyTo, setReplyTo] = useState<number | null>(null);
 
   const postComments = comments[postSlug] || [];
 
   const handleAddComment = () => {
     if (!input.trim() || !author.trim()) return;
-    const newComment = { 
-      text: input.trim(), 
-      author: author.trim(), 
-      replyTo: replyTo ?? undefined, 
-      liked: false 
+    const newComment = {
+      text: input.trim(),
+      author: author.trim(),
+      replyTo: replyTo ?? undefined,
+      liked: false,
     };
     setComments((prev) => ({
       ...prev,
@@ -184,7 +180,6 @@ function CommentSection({ postSlug }: { postSlug: string }) {
               comment.replyTo !== undefined ? "ml-6 bg-gray-50" : "bg-gray-100"
             }`}
           >
-            {/* Mostra nome + comentário */}
             <p className="font-semibold text-sm text-gray-700">{comment.author}</p>
             <p className="text-gray-700 break-words">{comment.text}</p>
 

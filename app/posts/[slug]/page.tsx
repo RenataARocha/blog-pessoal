@@ -1,22 +1,16 @@
 // Server Component - PostPage.tsx
 import { notFound } from "next/navigation";
 import { posts } from "../../../data/posts";
-import Image, { type StaticImageData } from "next/image";
+import Image from "next/image";
 import Link from "next/link";
-
-// imagens
-import imgOrganizadora from "../../../public/assets/organizadora-lar.png";
-import imgCurriculo from "../../../public/assets/gerador-curriculo.png";
-import imgProjeto7 from "../../../public/assets/to-do-list-react.png";
-import imgKoru from "../../../public/assets/assistente-de-estudos-com-ia.png";
-
 import { PostContent } from "../../../components/PostContent"; // Client Component para animação
 
-const imagesMap: Record<string, StaticImageData> = {
-  "organizadora-lar": imgOrganizadora as StaticImageData,
-  "gerador-curriculo": imgCurriculo as StaticImageData,
-  "to-do-list-react": imgProjeto7 as StaticImageData,
-  "assistente-de-estudos-com-ia": imgKoru as StaticImageData,
+// Mapeamento de slugs para paths das imagens públicas
+const imagesMap: Record<string, string> = {
+  "organizadora-lar": "/assets/organizadora-lar.png",
+  "gerador-curriculo": "/assets/gerador-curriculo.png",
+  "to-do-list-react": "/assets/to-do-list-react.png",
+  "assistente-de-estudos-com-ia": "/assets/assistente-de-estudos-com-ia.png",
 };
 
 interface PostPageProps {
@@ -56,6 +50,8 @@ export default async function PostPage({ params }: PostPageProps) {
           <Image
             src={imgSrc}
             alt={post.title}
+            width={600}   // Ajuste o tamanho conforme necessário
+            height={400}
             className="mb-6 rounded-lg"
           />
         )}
