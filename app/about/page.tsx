@@ -1,4 +1,4 @@
-"use client"; // ✅ Essencial para usar framer-motion
+"use client"; // Essencial para usar framer-motion
 
 import { motion } from "framer-motion";
 import { Github, Linkedin } from "lucide-react";
