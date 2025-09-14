@@ -1,8 +1,7 @@
-import { posts } from "../../../data/posts";
 import { notFound } from "next/navigation";
+import { posts } from "../../../data/posts";
+import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
-import { type StaticImageData } from "next/image";
-import Image from "next/image";
 
 // Import das imagens
 import imgOrganizadora from "../../../public/assets/organizadora-lar.png";
@@ -10,16 +9,26 @@ import imgCurriculo from "../../../public/assets/gerador-curriculo.png";
 import imgProjeto7 from "../../../public/assets/to-do-list-react.png";
 import imgKoru from "../../../public/assets/assistente-de-estudos-com-IA.png";
 
+// Mapeamento slug -> imagem
 const imagesMap: Record<string, StaticImageData> = {
-  "organizadora-lar": imgOrganizadora,
-  "gerador-curriculo": imgCurriculo,
-  "To-Do-List-React": imgProjeto7,
-  "assistente-de-estudos-com-IA": imgKoru,
+  "organizadora-lar": imgOrganizadora as StaticImageData,
+  "gerador-curriculo": imgCurriculo as StaticImageData,
+  "To-Do-List-React": imgProjeto7 as StaticImageData,
+  "assistente-de-estudos-com-IA": imgKoru as StaticImageData,
 };
 
-export default function PostPage({ params }: { params: { slug: string } }) {
+// Tipagem da prop
+interface PostPageProps {
+  params: {
+    slug: string;
+  };
+}
+
+export default function PostPage({ params }: PostPageProps) {
   const post = posts.find((p) => p.slug === params.slug);
   if (!post) return notFound();
+
+  const imgSrc = imagesMap[post.slug];
 
   return (
     <div className="max-w-4xl mx-auto py-12 px-4">
@@ -33,8 +42,12 @@ export default function PostPage({ params }: { params: { slug: string } }) {
       <h1 className="text-3xl font-playfair font-bold text-gray-800 mb-4">{post.title}</h1>
       <p className="text-gray-500 mb-6">{post.date}</p>
 
-      {post.slug in imagesMap && (
-        <Image src={imagesMap[post.slug]} alt={post.title} className="mb-6 rounded-lg" />
+      {imgSrc && (
+        <Image
+          src={imgSrc}
+          alt={post.title}
+          className="mb-6 rounded-lg"
+        />
       )}
 
       <div className="prose max-w-none text-gray-700">
