@@ -9,22 +9,20 @@ type LikeButtonProps = {
 export default function LikeButton({ slug }: LikeButtonProps) {
     const [likes, setLikes] = useState<number>(0);
 
-    // Carrega o valor salvo no localStorage ao montar o componente
     useEffect(() => {
         try {
             const saved = localStorage.getItem(`likes:${slug}`);
             if (saved) setLikes(Number(saved));
         } catch {
-            // Ambiente sem localStorage (por exemplo, SSR)
+            // Ambiente sem localStorage
         }
     }, [slug]);
 
-    // Salva no localStorage sempre que os likes mudam
     useEffect(() => {
         try {
             localStorage.setItem(`likes:${slug}`, String(likes));
         } catch {
-            // Segurança caso o localStorage não esteja disponível
+            // Segurança caso localStorage não disponível
         }
     }, [likes, slug]);
 
@@ -32,6 +30,7 @@ export default function LikeButton({ slug }: LikeButtonProps) {
         <button
             onClick={() => setLikes((prev) => prev + 1)}
             className="bg-orange-600 text-white px-4 py-2 rounded-xl hover:bg-orange-700 transition transform hover:-translate-y-1 inline-block"
+            aria-label={`Curtir post: ${likes} curtidas`}
         >
             🤍 Curtir {likes > 0 ? `(${likes})` : ""}
         </button>

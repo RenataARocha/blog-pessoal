@@ -17,16 +17,18 @@ export default function FeaturedPostCard({ title, content, date, slug, image }: 
         <Image
           src={image}
           alt={title}
-          width={600} // Ajuste a largura para o tamanho ideal da imagem
-          height={400} // Ajuste a altura para o tamanho ideal da imagem
+          width={600}
+          height={400}
           className="object-cover w-full rounded-t-lg"
         />
       </div>
 
-      {/* Conteúdo ao lado */}
+      {/* Conteúdo */}
       <div className="p-6 flex flex-col justify-between">
         <div>
-          <p className="text-sm text-gray-500 mb-2">{date}</p>
+          <time className="text-sm text-gray-500 mb-2" dateTime={new Date(date).toISOString()}>
+            {date}
+          </time>
           <h2 className="text-2xl font-playfair font-bold text-gray-800 mb-2 leading-tight">{title}</h2>
           <p className="text-gray-700 leading-relaxed mb-4 line-clamp-3">{content}</p>
         </div>
@@ -34,6 +36,7 @@ export default function FeaturedPostCard({ title, content, date, slug, image }: 
           <Link
             href={`/posts/${slug}`}
             className="text-orange-600 hover:underline"
+            aria-label={`Leia mais sobre ${title}`}
           >
             Leia Mais →
           </Link>
