@@ -39,66 +39,66 @@ export default function BlogPage() {
       </aside>
 
       {/* Conteúdo dos posts */}
-    
-<main className="w-full md:w-3/4 space-y-16">
-  {posts
-    .slice()
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()) // ordem decrescente
-    .map((post) => {
-      const mediaSrc = mediaMap[post.slug];
-      return (
-        <article
-          key={post.id}
-          id={post.slug}
-          className="p-6 rounded-lg shadow-md hover:shadow-lg transition bg-white"
-        >
-          {/* Título e data */}
-          <h2 className="text-2xl font-bold mb-2">{post.title}</h2>
-          <small className="text-gray-500">{post.date}</small>
 
-          {/* Imagem / vídeo do post */}
-          {mediaSrc && (
-            <video
-              src={mediaSrc}
-              controls
-              className="rounded-lg my-4 w-full max-h-[450px] object-cover"
-            />
-          )}
-
-          {/* Conteúdo com Markdown */}
-          <div className="text-gray-700 mb-4 whitespace-pre-line">
-            <ReactMarkdown>{post.content}</ReactMarkdown>
-          </div>
-
-          {/* Botões e interações */}
-          <div className="flex items-center gap-4 mb-4">
-            <LikeButton slug={post.slug} />
-            {post.github && (
-              <Link
-                href={post.github}
-                target="_blank"
-                className="text-blue-600 hover:underline"
+      <main className="w-full md:w-3/4 space-y-16">
+        {posts
+          .slice()
+          .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()) // ordem decrescente
+          .map((post) => {
+            const mediaSrc = mediaMap[post.slug];
+            return (
+              <article
+                key={post.id}
+                id={post.slug}
+                className="p-6 rounded-lg shadow-md hover:shadow-lg transition bg-white"
               >
-                Ver no GitHub
-              </Link>
-            )}
-            {post.site && (
-              <Link
-                href={post.site}
-                target="_blank"
-                className="text-blue-600 hover:underline"
-              >
-                Ver no Site
-              </Link>
-            )}
-          </div>
+                {/* Título e data */}
+                <h2 className="text-2xl font-bold mb-2">{post.title}</h2>
+                <small className="text-gray-500">{post.date}</small>
 
-          {/* Comentários */}
-          <CommentSection postSlug={post.slug} />
-        </article>
-      );
-    })}
-</main>
+                {/* Imagem / vídeo do post */}
+                {mediaSrc && (
+                  <video
+                    src={mediaSrc}
+                    controls
+                    className="rounded-lg my-4 w-full max-h-[450px] object-cover"
+                  />
+                )}
+
+                {/* Conteúdo com Markdown */}
+                <div className="text-gray-700 mb-4 whitespace-pre-line">
+                  <ReactMarkdown>{post.content}</ReactMarkdown>
+                </div>
+
+                {/* Botões e interações */}
+                <div className="flex items-center gap-4 mb-4">
+                  <LikeButton slug={post.slug} />
+                  {post.github && (
+                    <Link
+                      href={post.github}
+                      target="_blank"
+                      className="text-blue-600 hover:underline"
+                    >
+                      Ver no GitHub
+                    </Link>
+                  )}
+                  {post.site && (
+                    <Link
+                      href={post.site}
+                      target="_blank"
+                      className="text-blue-600 hover:underline"
+                    >
+                      Ver no Site
+                    </Link>
+                  )}
+                </div>
+
+                {/* Comentários */}
+                <CommentSection postSlug={post.slug} />
+              </article>
+            );
+          })}
+      </main>
 
     </motion.div>
   );
@@ -115,8 +115,18 @@ function CommentSection({ postSlug }: { postSlug: string }) {
 
   const postComments = comments[postSlug] || [];
 
+  const [errorMessage, setErrorMessage] = useState("");
+
   const handleAddComment = () => {
-    if (!input.trim() || !author.trim()) return;
+    if (!author.trim()) {
+      setErrorMessage("Por favor, preencha o nome!");
+      return;
+    }
+    if (!input.trim()) {
+      setErrorMessage("Por favor, escreva seu comentário!");
+      return;
+    }
+
     const newComment = {
       text: input.trim(),
       author: author.trim(),
@@ -129,29 +139,15 @@ function CommentSection({ postSlug }: { postSlug: string }) {
     }));
     setInput("");
     setReplyTo(null);
-  };
-
-  const toggleLike = (idx: number) => {
-    setComments((prev) => ({
-      ...prev,
-      [postSlug]: prev[postSlug].map((c, i) =>
-        i === idx ? { ...c, liked: !c.liked } : c
-      ),
-    }));
-  };
-
-  const removeComment = (idx: number) => {
-    setComments((prev) => ({
-      ...prev,
-      [postSlug]: prev[postSlug].filter((_, i) => i !== idx),
-    }));
+    setErrorMessage(""); // limpa a mensagem ao comentar
   };
 
   return (
     <div className="mt-6">
       <h3 className="font-semibold mb-2">Comentários</h3>
 
-      <div className="flex flex-col md:flex-row gap-2 mb-4">
+      {/* Inputs */}
+      <div className="flex flex-col md:flex-row gap-2 mb-2">
         <input
           type="text"
           value={author}
@@ -174,44 +170,26 @@ function CommentSection({ postSlug }: { postSlug: string }) {
         </button>
       </div>
 
+      {/* Mensagem de erro */}
+      {errorMessage && (
+        <p className="text-red-600 text-sm mb-2">{errorMessage}</p>
+      )}
+
+      {/* Lista de comentários */}
       <ul className="space-y-3">
         {postComments.map((comment, idx) => (
           <li
             key={idx}
-            className={`p-2 rounded-lg ${comment.replyTo !== undefined ? "ml-6 bg-gray-50" : "bg-gray-100"
-              }`}
+            className={`p-2 rounded-lg ${comment.replyTo !== undefined ? "ml-6 bg-gray-50" : "bg-gray-100"}`}
           >
             <p className="font-semibold text-sm text-gray-700">{comment.author}</p>
             <p className="text-gray-700 break-words">{comment.text}</p>
-
-            <div className="flex items-center gap-4 mt-2 text-sm">
-              <button
-                className={`${comment.liked ? "text-orange-600 font-semibold" : "text-gray-500"
-                  } hover:text-orange-600`}
-                onClick={() => toggleLike(idx)}
-              >
-                {comment.liked ? "Curtido" : "Curtir"}
-              </button>
-
-              {comment.replyTo === undefined && (
-                <button
-                  onClick={() => setReplyTo(idx)}
-                  className="text-gray-500 hover:text-orange-600"
-                >
-                  Responder
-                </button>
-              )}
-
-              <button
-                onClick={() => removeComment(idx)}
-                className="hover:text-orange-600 ml-auto"
-              >
-                ❌
-              </button>
-            </div>
           </li>
         ))}
       </ul>
     </div>
   );
 }
+
+
+
