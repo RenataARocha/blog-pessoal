@@ -44,6 +44,7 @@ export default function Home() {
           <Link
             href="/posts"
             className="px-6 py-3 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition transform hover:-translate-y-1 inline-block focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
+            role="button"
           >
             Ver Posts
           </Link>
