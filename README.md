@@ -1,36 +1,107 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📖 Blog Pessoal — Renata Rocha
 
-## Getting Started
+[🌐 Ver site ao vivo](https://blog-pessoal-taupe.vercel.app/) • [💻 Código fonte no GitHub](https://github.com/RenataARocha/blog-pessoal)
 
-First, run the development server:
+---
+
+## ✨ Sobre o projeto
+
+Este é o meu **blog pessoal**, desenvolvido com **Next.js, React e Tailwind CSS**, onde compartilho minha jornada de transição de carreira de **design gráfico para desenvolvimento Front-End**.  
+Aqui você encontrará **posts, projetos, aprendizados e reflexões** sobre tecnologia, programação e design.
+
+---
+
+## 🚀 Funcionalidades
+
+- Layout **responsivo** (desktop e mobile)  
+- Página inicial com seção **Herói** + imagem de fundo  
+- Lista de posts + páginas individuais  
+- **Curtir posts** (componente LikeButton)  
+- **Comentários simples** (nome e texto)  
+- SEO básico (meta tags, Open Graph e Twitter)  
+- **Botão voltar ao topo**  
+- Estrutura clara para **escalabilidade futura**  
+
+---
+
+## 🛠 Tecnologias utilizadas
+
+- [Next.js](https://nextjs.org/) — Framework React  
+- [React](https://reactjs.org/) — Biblioteca de UI  
+- [Tailwind CSS](https://tailwindcss.com/) — Estilização  
+- [Framer Motion](https://www.framer.com/motion/) — Animações  
+- [React Markdown](https://github.com/remarkjs/react-markdown) — Renderização de posts  
+- Git & GitHub — Controle de versão e deploy com **Vercel**  
+
+---
+
+## ⚙️ Como rodar localmente
 
 ```bash
+# Clone o repositório
+git clone https://github.com/RenataARocha/blog-pessoal.git
+
+# Acesse a pasta do projeto
+cd blog-pessoal
+
+# Instale as dependências
+npm install
+
+# Rode em modo de desenvolvimento
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Acesse no navegador
+http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📂 Estrutura de pastas
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+app/
+ ├── about/
+ │   └── page.tsx
+ ├── posts/
+ │   ├── [slug]/
+ │   │   └── page.tsx
+ │   └── page.tsx
+ ├── favicon.ico
+ ├── globals.css
+ ├── layout.tsx
+ ├── Navbar.tsx
+ └── page.tsx
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+components/
+ ├── FeaturedPostCard.tsx
+ ├── LikeButton.tsx
+ ├── PostCard.tsx
+ ├── PostContent.tsx
+ └── ScrollToTopButton.tsx
 
-## Learn More
+data/
+ └── posts.ts
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 🔍 SEO & Acessibilidade
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Open Graph configurado para compartilhamento em redes sociais
+- Imagem de capa para WhatsApp, Twitter, LinkedIn etc.
+- Alt text em imagens
+- ARIA labels em botões e navegação
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📅 Próximos passos
 
-## Deploy on Vercel
+- Salvar comentários em backend (ex: Firebase ou Supabase)
+- Paginação / Infinite scroll para posts
+- SEO avançado por post (descrição, tags personalizadas)
+- Melhorar performance de imagens
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🧾 Licença
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Este projeto está sob a licença MIT. Fique à vontade para estudar, adaptar e usar como referência.
+
+## 📬 Contato
+
+👩‍💻 Renata Rocha  
+[LinkedIn](https://www.linkedin.com/in/renatarocha/) • [GitHub](https://github.com/RenataARocha)
+
+ 
