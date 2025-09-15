@@ -27,7 +27,7 @@ export default function Home() {
       transition={{ duration: 0.6 }}
     >
       {/* Hero / Apresentação com imagem de fundo */}
-      <section className="relative w-screen h-screen" aria-labelledby="hero-heading">
+      <section className="relative w-screen min-h-screen" aria-labelledby="hero-heading">
         <Image
           src="/assets/codigo.jpg"
           alt="Imagem de fundo, código de programação em uma tela escura."
@@ -37,7 +37,9 @@ export default function Home() {
         />
         <div className="absolute inset-0 bg-black/50" />
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-6">
-          <h1 id="hero-heading" className="text-5xl font-playfair mb-6">Eu sou Renata Rocha</h1>
+          <h1 id="hero-heading" className="text-5xl font-playfair mb-6">
+            Eu sou Renata Rocha
+          </h1>
           <p className="text-lg font-assistant mb-8">
             Desenvolvedora Front-End em transição, criando experiências digitais que combinam beleza e funcionalidade.
           </p>
