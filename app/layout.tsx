@@ -3,7 +3,7 @@ import { Playfair_Display, Assistant } from "next/font/google";
 import Navbar from "./Navbar";
 import Link from "next/link";
 import { FaLinkedin, FaGithub, FaWhatsapp } from 'react-icons/fa';
-import ScrollToTopButton from "../components/ScrollToTopButton"; // Importe o novo componente
+import ScrollToTopButton from "../components/ScrollToTopButton";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -26,7 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="pt-BR" className={`${playfair.variable} ${assistant.variable}`}>
       <body className="bg-white text-black font-assistant">
-        {/* ... (seu header) ... */}
+        {/* ... ( header) ... */}
         <header className="bg-white py-8 text-center relative">
           <span className="absolute bottom-0 left-0 w-full h-px bg-stone-400 shadow-sm shadow-stone-900/50"></span>
           <div className="max-w-4xl mx-auto">
@@ -46,11 +46,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </header>
 
         <main className="mt-1">{children}</main>
-        
-        {/* Adicione o novo componente do botão aqui */}
+
+        {/* componente do botão aqui */}
         <ScrollToTopButton />
 
-        {/* ... (seu footer) ... */}
+        {/* ... (footer) ... */}
         <footer id="contato" className="bg-black text-white py-8">
           <div className="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left">
             {/* Título e Subtítulo */}
@@ -58,10 +58,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <h3 className="text-2xl font-playfair font-normal">Diário de uma Dev</h3>
               <p className="text-sm text-gray-400">Um blog pessoal sobre minha jornada no front-end</p>
             </div>
-            
+
             {/* Links da Navegação */}
             <nav className="mb-4 md:mb-0">
-              <ul className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-8">
+              <ul className="flex flex-nowrap gap-4 md:flex-row items-center md:items-center justify-center md:justify-start md:gap-8 w-full">
                 <li>
                   <Link href="/" className="text-gray-300 hover:text-pink-600 transition-colors">
                     Home
@@ -79,7 +79,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 </li>
               </ul>
             </nav>
-
             {/* Links de Contato */}
             <div className="flex space-x-4 mb-4 md:mb-0 text-gray-300">
               <a href="https://www.linkedin.com/in/renata-alexandre-rocha/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
@@ -93,7 +92,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               </a>
             </div>
           </div>
-          
+
           {/* Direitos Autorais */}
           <div className="mt-6 pt-6 border-t border-gray-700 text-center text-sm text-gray-500">
             <p>© {new Date().getFullYear()} Renata Rocha. Todos os direitos reservados.</p>
