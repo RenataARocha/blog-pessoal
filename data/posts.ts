@@ -13,13 +13,12 @@ export type Post = {
 
 
 export const posts: Post[] = [
-  
-  {
+ {
     id: 1,
     slug: "primeiro-post",
     title: "Meu Primeiro Post",
     summary: "Introdução ao meu blog pessoal.",
-    date: "2025-09-10",
+    date: "2025-08-01",
     author: "Renata Rocha",
     content:
       "Hoje começa oficialmente minha jornada no desenvolvimento front-end! 🚀\n\n" +
@@ -32,7 +31,7 @@ export const posts: Post[] = [
     slug: "nextjs-app-router",
     title: "Explorando o App Router do Next.js",
     summary: "Entendendo a nova estrutura de roteamento do Next.js.",
-    date: "2025-09-11",
+    date: "2025-08-07",
     author: "Renata Rocha",
     content:
       "O **App Router** do Next.js chegou trazendo uma revolução na forma de estruturar aplicações. " +
@@ -40,12 +39,12 @@ export const posts: Post[] = [
       "Estou explorando essas novidades no meu projeto pessoal e já percebo como o desenvolvimento fica mais " +
       "organizado e poderoso. Em breve compartilho aqui exemplos práticos que podem ajudar quem também está aprendendo Next.js! ⚡",
   },
-  {
+   {
     id: 3,
     slug: "organizadora-lar",
     title: "Organizadora do Lar",
     summary: "App de organização de tarefas com alarme, categorias, metas e sugestões automáticas.",
-    date: "2025-09-12",
+    date: "2025-08-15",
     author: "Renata Rocha",
     content:
       "Criar o **Organizadora do Lar** foi transformar uma necessidade pessoal em um projeto real. ✨\n\n" +
@@ -61,7 +60,7 @@ export const posts: Post[] = [
     slug: "gerador-curriculo",
     title: "Gerador de Currículo Interativo",
     summary: "Projeto que cria currículos dinâmicos e interativos, com preview em tempo real.",
-    date: "2025-09-13",
+    date: "2025-08-23",
     author: "Renata Rocha",
     content:
       "Sempre acreditei que um **currículo bem apresentado** pode abrir portas. Pensando nisso, criei o **Gerador de Currículo Interativo**. 💼\n\n" +
@@ -76,7 +75,7 @@ export const posts: Post[] = [
     slug: "to-do-list-react",
     title: "To-Do List React",
     summary: "Projeto completo desenvolvido em HTML, CSS e JavaScript, com foco em interface agradável.",
-    date: "2025-09-14",
+    date: "2025-09-03",
     author: "Renata Rocha",
     content:
       "No programa **Desenvolve (Grupo Boticário + Koru)**, tive a oportunidade de trabalhar em equipe no projeto **To-Do List React**. ✅\n\n" +
@@ -91,7 +90,7 @@ export const posts: Post[] = [
     slug: "assistente-de-estudos-com-ia",
     title: "Assistente de Estudos com IA",
     summary: "Projeto desenvolvido durante o programa Koru, aplicando boas práticas de front-end.",
-    date: "2025-09-15",
+    date: "2025-09-10",
     author: "Renata Rocha",
     content:
       "Esse projeto foi especial: durante o **programa Desenvolve (Boticário + Koru)**, participei do desenvolvimento do **Assistente de Estudos com IA**. 🤖✨\n\n" +

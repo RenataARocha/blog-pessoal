@@ -39,62 +39,67 @@ export default function BlogPage() {
       </aside>
 
       {/* Conteúdo dos posts */}
-      <main className="w-full md:w-3/4 space-y-16">
-        {posts.map((post) => {
-          const mediaSrc = mediaMap[post.slug];
-          return (
-            <article
-              key={post.id}
-              id={post.slug}
-              className="p-6 rounded-lg shadow-md hover:shadow-lg transition bg-white"
-            >
-              {/* Título e data */}
-              <h2 className="text-2xl font-bold mb-2">{post.title}</h2>
-              <small className="text-gray-500">{post.date}</small>
+    
+<main className="w-full md:w-3/4 space-y-16">
+  {posts
+    .slice()
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()) // ordem decrescente
+    .map((post) => {
+      const mediaSrc = mediaMap[post.slug];
+      return (
+        <article
+          key={post.id}
+          id={post.slug}
+          className="p-6 rounded-lg shadow-md hover:shadow-lg transition bg-white"
+        >
+          {/* Título e data */}
+          <h2 className="text-2xl font-bold mb-2">{post.title}</h2>
+          <small className="text-gray-500">{post.date}</small>
 
-              {/* Imagem / vídeo do post */}
-              {mediaSrc && (
-                <video
-                  src={mediaSrc}
-                  controls
-                  className="rounded-lg my-4 w-full max-h-[450px] object-cover"
-                />
-              )}
+          {/* Imagem / vídeo do post */}
+          {mediaSrc && (
+            <video
+              src={mediaSrc}
+              controls
+              className="rounded-lg my-4 w-full max-h-[450px] object-cover"
+            />
+          )}
 
-              {/* Conteúdo com Markdown */}
-              <div className="text-gray-700 mb-4 whitespace-pre-line">
-                <ReactMarkdown>{post.content}</ReactMarkdown>
-              </div>
+          {/* Conteúdo com Markdown */}
+          <div className="text-gray-700 mb-4 whitespace-pre-line">
+            <ReactMarkdown>{post.content}</ReactMarkdown>
+          </div>
 
-              {/* Botões e interações */}
-              <div className="flex items-center gap-4 mb-4">
-                <LikeButton slug={post.slug} />
-                {post.github && (
-                  <Link
-                    href={post.github}
-                    target="_blank"
-                    className="text-blue-600 hover:underline"
-                  >
-                    Ver no GitHub
-                  </Link>
-                )}
-                {post.site && (
-                  <Link
-                    href={post.site}
-                    target="_blank"
-                    className="text-blue-600 hover:underline"
-                  >
-                    Ver no Site
-                  </Link>
-                )}
-              </div>
+          {/* Botões e interações */}
+          <div className="flex items-center gap-4 mb-4">
+            <LikeButton slug={post.slug} />
+            {post.github && (
+              <Link
+                href={post.github}
+                target="_blank"
+                className="text-blue-600 hover:underline"
+              >
+                Ver no GitHub
+              </Link>
+            )}
+            {post.site && (
+              <Link
+                href={post.site}
+                target="_blank"
+                className="text-blue-600 hover:underline"
+              >
+                Ver no Site
+              </Link>
+            )}
+          </div>
 
-              {/* Comentários */}
-              <CommentSection postSlug={post.slug} />
-            </article>
-          );
-        })}
-      </main>
+          {/* Comentários */}
+          <CommentSection postSlug={post.slug} />
+        </article>
+      );
+    })}
+</main>
+
     </motion.div>
   );
 }
