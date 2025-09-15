@@ -1,9 +1,5 @@
 # 📖 Blog Pessoal — Renata Rocha
 
-[🌐 Ver site ao vivo](https://blog-pessoal-taupe.vercel.app/) • [💻 Código fonte no GitHub](https://github.com/RenataARocha/blog-pessoal)
-
----
-
 ## ✨ Sobre o projeto
 
 Este é o meu **blog pessoal**, desenvolvido com **Next.js, React e Tailwind CSS**, onde compartilho minha jornada de transição de carreira de **design gráfico para desenvolvimento Front-End**.  
@@ -23,6 +19,16 @@ Aqui você encontrará **posts, projetos, aprendizados e reflexões** sobre tecn
 - Estrutura clara para **escalabilidade futura**  
 
 ---
+
+[🌐 Ver site ao vivo](https://blog-pessoal-taupe.vercel.app/) 
+
+---
+## 🎥 Demonstração
+
+https://github.com/user-attachments/assets/964ac594-0d7e-422c-92ed-12d0f897de45
+
+---
+
 
 ## 🛠 Tecnologias utilizadas
 
