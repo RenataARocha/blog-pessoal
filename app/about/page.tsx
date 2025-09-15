@@ -11,10 +11,12 @@ export default function AboutPage() {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -10 }}
       transition={{ duration: 0.6 }}
+      aria-labelledby="about-title"
     >
       <div className="bg-white shadow-lg rounded-2xl p-8 max-w-3xl text-center space-y-6 border border-gray-100">
-        <h2 className="text-3xl font-bold text-gray-800">Sobre mim</h2>
-
+        <h2 id="about-title" className="text-3xl font-bold text-gray-800">
+          Sobre mim
+        </h2>
         <p className="text-gray-700 leading-relaxed">
           Minha jornada começou no <strong>design gráfico</strong>, onde, por
           oito anos, criei identidades visuais que conectavam marcas às pessoas,
@@ -49,16 +51,21 @@ export default function AboutPage() {
           <a
             href="https://github.com/RenataARocha"
             target="_blank"
+            rel="noopener noreferrer"
             className="flex items-center gap-2 text-orange-600 hover:text-orange-700 font-medium transition"
+            aria-label="Abrir GitHub da Renata em nova aba"
           >
-            <Github size={20} /> GitHub
+            <Github size={20} aria-hidden="true" /> GitHub
           </a>
+
           <a
             href="https://www.linkedin.com/in/renata-alexandre-rocha/"
             target="_blank"
+            rel="noopener noreferrer"
             className="flex items-center gap-2 text-orange-600 hover:text-orange-700 font-medium transition"
+            aria-label="Abrir LinkedIn da Renata em nova aba"
           >
-            <Linkedin size={20} /> LinkedIn
+            <Linkedin size={20} aria-hidden="true" /> LinkedIn
           </a>
         </div>
       </div>
