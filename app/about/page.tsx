@@ -49,14 +49,14 @@ export default function AboutPage() {
           <a
             href="https://github.com/RenataARocha"
             target="_blank"
-            className="flex items-center gap-2 text-pink-500 hover:text-pink-600 font-medium transition"
+            className="flex items-center gap-2 text-orange-600 hover:text-orange-700 font-medium transition"
           >
             <Github size={20} /> GitHub
           </a>
           <a
             href="https://www.linkedin.com/in/renata-alexandre-rocha/"
             target="_blank"
-            className="flex items-center gap-2 text-pink-500 hover:text-pink-600 font-medium transition"
+            className="flex items-center gap-2 text-orange-600 hover:text-orange-700 font-medium transition"
           >
             <Linkedin size={20} /> LinkedIn
           </a>

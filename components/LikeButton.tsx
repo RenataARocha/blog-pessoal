@@ -31,9 +31,9 @@ export default function LikeButton({ slug }: LikeButtonProps) {
     return (
         <button
             onClick={() => setLikes((prev) => prev + 1)}
-            className="bg-pink-500 text-white px-4 py-2 rounded-xl hover:bg-pink-600 transition"
+            className="bg-orange-600 text-white px-4 py-2 rounded-xl hover:bg-orange-700 transition"
         >
-            ❤️ Curtir {likes > 0 ? `(${likes})` : ""}
+            🤍 Curtir {likes > 0 ? `(${likes})` : ""}
         </button>
     );
 }

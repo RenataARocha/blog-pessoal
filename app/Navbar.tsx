@@ -66,8 +66,8 @@ export default function Navbar() {
             onClick={(e) => handleClick(e, link.href)}
             whileHover={{ scale: 1.1 }}
             className={`font-assistant uppercase tracking-wider font-normal text-lg transition-colors ${
-              isActive ? "text-pink-600" : "text-gray-700"
-            } hover:text-pink-400`}
+              isActive ? "text-orange-600" : "text-gray-700"
+            } hover:text-orange-700`}
           >
             {link.name}
           </motion.a>

@@ -44,7 +44,7 @@ export default function Home() {
           </p>
           <Link
             href="/posts"
-            className="px-6 py-3 bg-pink-600 text-white rounded-lg hover:bg-pink-500 transition transform hover:-translate-y-1 inline-block"
+            className="px-6 py-3 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition transform hover:-translate-y-1 inline-block"
           >
             Ver Posts
           </Link>
@@ -108,7 +108,7 @@ export default function Home() {
 
             <Link
               href="/about"
-              className="px-6 py-3 bg-pink-600 text-white rounded-lg hover:bg-pink-500 transition transform hover:-translate-y-1 inline-block"
+              className="px-6 py-3 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition transform hover:-translate-y-1 inline-block"
             >
               Saiba mais
             </Link>

@@ -14,7 +14,7 @@ export default function PostCard({ title, content, date, slug }: PostCardProps) 
       <h2 className="text-xl font-semibold mt-2 mb-2">{title}</h2>
       <p className="text-gray-700 line-clamp-3">{content}</p>
       <div className="mt-4">
-        <Link href={`/posts/${slug}`} className="text-pink-500 hover:underline">
+        <Link href={`/posts/${slug}`} className="text-orange-600 hover:underline">
           Leia mais →
         </Link>
       </div>

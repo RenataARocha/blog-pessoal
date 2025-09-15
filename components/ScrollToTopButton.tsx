@@ -30,7 +30,7 @@ export default function ScrollToTopButton() {
   return (
     <button
       onClick={scrollToTop}
-      className={`fixed bottom-8 right-8 bg-pink-600 text-white p-3 rounded-full shadow-lg transition-opacity duration-300 ${
+      className={`fixed bottom-8 right-8 bg-orange-600 text-white p-3 rounded-full shadow-lg transition-opacity duration-300 ${
         isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
       }`}
       aria-label="Voltar para o topo"

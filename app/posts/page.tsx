@@ -168,7 +168,7 @@ function CommentSection({ postSlug }: { postSlug: string }) {
         />
         <button
           onClick={handleAddComment}
-          className="bg-pink-500 text-white px-4 py-2 rounded-lg hover:bg-pink-600 transition"
+          className="bg-orange-600 text-white px-4 py-2 rounded-lg hover:bg-orange-700 transition"
         >
           {replyTo !== null ? "Responder" : "Comentar"}
         </button>
@@ -186,8 +186,8 @@ function CommentSection({ postSlug }: { postSlug: string }) {
 
             <div className="flex items-center gap-4 mt-2 text-sm">
               <button
-                className={`${comment.liked ? "text-pink-500 font-semibold" : "text-gray-500"
-                  } hover:text-pink-600`}
+                className={`${comment.liked ? "text-orange-600 font-semibold" : "text-gray-500"
+                  } hover:text-orange-600`}
                 onClick={() => toggleLike(idx)}
               >
                 {comment.liked ? "Curtido" : "Curtir"}
@@ -196,7 +196,7 @@ function CommentSection({ postSlug }: { postSlug: string }) {
               {comment.replyTo === undefined && (
                 <button
                   onClick={() => setReplyTo(idx)}
-                  className="text-gray-500 hover:text-pink-500"
+                  className="text-gray-500 hover:text-orange-600"
                 >
                   Responder
                 </button>
@@ -204,7 +204,7 @@ function CommentSection({ postSlug }: { postSlug: string }) {
 
               <button
                 onClick={() => removeComment(idx)}
-                className="hover:text-red-500 ml-auto"
+                className="hover:text-orange-600 ml-auto"
               >
                 ❌
               </button>

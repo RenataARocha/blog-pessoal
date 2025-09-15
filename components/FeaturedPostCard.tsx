@@ -33,7 +33,7 @@ export default function FeaturedPostCard({ title, content, date, slug, image }: 
         <div className="mt-auto">
           <Link
             href={`/posts/${slug}`}
-            className="text-pink-500 hover:underline"
+            className="text-orange-600 hover:underline"
           >
             Leia Mais →
           </Link>

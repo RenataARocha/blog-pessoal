@@ -33,7 +33,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <h1 className="font-playfair text-6xl font-normal mb-2 tracking-wide text-black">
               Diário de uma Dev
             </h1>
-            <h2 className="font-assistant text-lg font-normal text-pink-600 mb-1">
+            <h2 className="font-assistant text-lg font-normal text-orange-600 mb-1">
               Renata Rocha
             </h2>
             <p className="font-assistant text-sm text-gray-600 mb-6">
@@ -63,17 +63,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <nav className="mb-4 md:mb-0">
               <ul className="flex flex-nowrap gap-4 md:flex-row items-center md:items-center justify-center md:justify-start md:gap-8 w-full">
                 <li>
-                  <Link href="/" className="text-gray-300 hover:text-pink-600 transition-colors">
+                  <Link href="/" className="text-gray-300 hover:text-orange-600 transition-colors">
                     Home
                   </Link>
                 </li>
                 <li>
-                  <Link href="/about" className="text-gray-300 hover:text-pink-600 transition-colors">
+                  <Link href="/about" className="text-gray-300 hover:text-orange-600 transition-colors">
                     Sobre
                   </Link>
                 </li>
                 <li>
-                  <Link href="/posts" className="text-gray-300 hover:text-pink-600 transition-colors">
+                  <Link href="/posts" className="text-gray-300 hover:text-orange-600 transition-colors">
                     Blog
                   </Link>
                 </li>
@@ -82,13 +82,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             {/* Links de Contato */}
             <div className="flex space-x-4 mb-4 md:mb-0 text-gray-300">
               <a href="https://www.linkedin.com/in/renata-alexandre-rocha/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                <FaLinkedin className="h-6 w-6 hover:text-pink-600 transition-colors" />
+                <FaLinkedin className="h-6 w-6 hover:text-orange-600 transition-colors" />
               </a>
               <a href="https://github.com/RenataARocha" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                <FaGithub className="h-6 w-6 hover:text-pink-600 transition-colors" />
+                <FaGithub className="h-6 w-6 hover:text-orange-600 transition-colors" />
               </a>
               <a href="https://wa.me/5584986399847" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-                <FaWhatsapp className="h-6 w-6 hover:text-pink-600 transition-colors" />
+                <FaWhatsapp className="h-6 w-6 hover:text-orange-600 transition-colors" />
               </a>
             </div>
           </div>
