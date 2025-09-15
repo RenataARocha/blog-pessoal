@@ -18,8 +18,44 @@ const assistant = Assistant({
 });
 
 export const metadata = {
-  title: "Renata Rocha | Diário de uma Dev",
-  description: "Um blog pessoal sobre minha jornada no front-end",
+  title: "Renata Rocha | Blog Pessoal de Front-End",
+  description: "Acompanhe a jornada de Renata Rocha na transição de designer gráfico para desenvolvedora Front-End, com estudos, projetos e reflexões sobre tecnologia.",
+  authors: [{ name: "Renata Rocha" }],
+  keywords: [
+    "Renata Rocha",
+    "front-end",
+    "desenvolvimento web",
+    "React",
+    "JavaScript",
+    "HTML",
+    "CSS",
+    "blog pessoal",
+    "transição de carreira",
+    "UX/UI",
+    "projetos web"
+  ],
+  robots: "index, follow",
+  openGraph: {
+    title: "Renata Rocha | Blog Pessoal de Front-End",
+    description: "Acompanhe a jornada de Renata Rocha na transição de designer gráfico para desenvolvedora Front-End, com estudos, projetos e reflexões sobre tecnologia.",
+    url: "https://blog-pessoal-taupe.vercel.app/",
+    siteName: "Blog Pessoal Renata Rocha",
+    images: [
+      {
+        url: "https://blog-pessoal-taupe.vercel.app/assets/capa-blog.png",
+        width: 1200,
+        height: 630,
+        alt: "Capa do Blog Pessoal de Renata Rocha",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Renata Rocha | Blog Pessoal de Front-End",
+    description: "Jornada de Renata Rocha na transição para Front-End, com estudos, projetos e reflexões sobre tecnologia.",
+    images: ["https://blog-pessoal-taupe.vercel.app/assets/capa-blog.png"],
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -29,7 +65,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <a href="#main-content" className="sr-only focus:not-sr-only focus:block focus:absolute focus:p-4 focus:bg-gray-100 focus:text-black focus:border focus:border-gray-400 focus:rounded-md z-50">
           Pular para o conteúdo principal
         </a>
-        
+
         <header className="bg-white py-8 text-center relative" role="banner">
           <span className="absolute bottom-0 left-0 w-full h-px bg-stone-400 shadow-sm shadow-stone-900/50"></span>
           <div className="max-w-4xl mx-auto">
