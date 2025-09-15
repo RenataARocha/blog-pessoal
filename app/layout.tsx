@@ -4,6 +4,7 @@ import Navbar from "./Navbar";
 import Link from "next/link";
 import { FaLinkedin, FaGithub, FaWhatsapp } from 'react-icons/fa';
 import ScrollToTopButton from "../components/ScrollToTopButton";
+import Head from "next/head";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -17,50 +18,31 @@ const assistant = Assistant({
   variable: "--font-assistant",
 });
 
-export const metadata = {
-  title: "Renata Rocha | Blog Pessoal de Front-End",
-  description: "Acompanhe a jornada de Renata Rocha na transição de designer gráfico para desenvolvedora Front-End, com estudos, projetos e reflexões sobre tecnologia.",
-  authors: [{ name: "Renata Rocha" }],
-  keywords: [
-    "Renata Rocha",
-    "front-end",
-    "desenvolvimento web",
-    "React",
-    "JavaScript",
-    "HTML",
-    "CSS",
-    "blog pessoal",
-    "transição de carreira",
-    "UX/UI",
-    "projetos web"
-  ],
-  robots: "index, follow",
-  openGraph: {
-    title: "Renata Rocha | Blog Pessoal de Front-End",
-    description: "Acompanhe a jornada de Renata Rocha na transição de designer gráfico para desenvolvedora Front-End, com estudos, projetos e reflexões sobre tecnologia.",
-    url: "https://blog-pessoal-taupe.vercel.app/",
-    siteName: "Blog Pessoal Renata Rocha",
-    images: [
-      {
-        url: "https://blog-pessoal-taupe.vercel.app/assets/capa-blog.png",
-        width: 1200,
-        height: 630,
-        alt: "Capa do Blog Pessoal de Renata Rocha",
-      },
-    ],
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Renata Rocha | Blog Pessoal de Front-End",
-    description: "Jornada de Renata Rocha na transição para Front-End, com estudos, projetos e reflexões sobre tecnologia.",
-    images: ["https://blog-pessoal-taupe.vercel.app/assets/capa-blog.png"],
-  },
-};
-
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-BR" className={`${playfair.variable} ${assistant.variable}`}>
+      <Head>
+        {/* Título e descrição */}
+        <title>Renata Rocha | Blog Pessoal de Front-End</title>
+        <meta name="description" content="Acompanhe a jornada de Renata Rocha na transição de designer gráfico para desenvolvedora Front-End, com estudos, projetos e reflexões sobre tecnologia." />
+
+        {/* Open Graph */}
+        <meta property="og:title" content="Renata Rocha | Blog Pessoal de Front-End" />
+        <meta property="og:description" content="Acompanhe a jornada de Renata Rocha na transição de designer gráfico para desenvolvedora Front-End, com estudos, projetos e reflexões sobre tecnologia." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://blog-pessoal-taupe.vercel.app/" />
+        <meta property="og:image" content="https://blog-pessoal-taupe.vercel.app/assets/capa-blog.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Capa do Blog Pessoal de Renata Rocha" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Renata Rocha | Blog Pessoal de Front-End" />
+        <meta name="twitter:description" content="Acompanhe a jornada de Renata Rocha na transição de designer gráfico para desenvolvedora Front-End, com estudos, projetos e reflexões sobre tecnologia." />
+        <meta name="twitter:image" content="https://blog-pessoal-taupe.vercel.app/assets/capa-blog.png" />
+      </Head>
+
       <body className="bg-white text-black font-assistant">
         <a href="#main-content" className="sr-only focus:not-sr-only focus:block focus:absolute focus:p-4 focus:bg-gray-100 focus:text-black focus:border focus:border-gray-400 focus:rounded-md z-50">
           Pular para o conteúdo principal
