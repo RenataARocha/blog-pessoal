@@ -26,7 +26,10 @@ export default function BlogPage() {
       transition={{ duration: 0.6 }}
     >
       {/* Menu lateral */}
-      <aside className="w-full md:w-1/4 sticky top-20 self-start mb-8 md:mb-0" aria-label="Menu lateral de posts">
+      <aside
+        className="w-full md:w-1/4 self-start mb-8 md:mb-0 bg-white p-4 rounded-lg shadow-md"
+        aria-label="Menu lateral de posts"
+      >
         <h2 className="font-bold text-xl mb-4">Posts</h2>
         <ul className="space-y-2">
           {posts.map((post) => (
