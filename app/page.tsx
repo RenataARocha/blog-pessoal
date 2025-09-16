@@ -1,9 +1,9 @@
 import PostCard from "../components/PostCard";
 import FeaturedPostCard from "../components/FeaturedPostCard";
+import AnimatedDiv from "../components/AnimatedDiv"; // <- novo
 import { posts } from "../data/posts";
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
 
 // Mapeamento slug -> caminho da imagem no /public
 const imagesMap: Record<string, string> = {
@@ -18,12 +18,7 @@ export default function Home() {
   const remainingPosts = posts.slice(2);
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -10 }}
-      transition={{ duration: 0.6 }}
-    >
+    <AnimatedDiv>
       {/* Hero / Apresentação com imagem de fundo */}
       <section className="relative w-screen min-h-screen" aria-labelledby="hero-heading">
         <Image
@@ -51,7 +46,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Últimos Posts (os 2 primeiros, sem imagem) */}
+      {/* Últimos Posts */}
       <section className="max-w-6xl mx-auto py-12 px-4" aria-labelledby="posts-heading">
         <h2 id="posts-heading" className="text-3xl font-playfair font-bold text-gray-800 mb-8 text-center">Últimos Posts</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
@@ -66,7 +61,6 @@ export default function Home() {
           ))}
         </div>
 
-        {/* Demais posts (com imagem, usando FeaturedPostCard) */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
           {remainingPosts.map((post) => (
             <FeaturedPostCard
@@ -115,6 +109,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-    </motion.div>
+    </AnimatedDiv>
   );
 }
