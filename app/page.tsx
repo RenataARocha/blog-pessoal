@@ -1,5 +1,3 @@
-"use client";
-
 import PostCard from "../components/PostCard";
 import FeaturedPostCard from "../components/FeaturedPostCard";
 import { posts } from "../data/posts";
